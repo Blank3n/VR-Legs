@@ -8,7 +8,7 @@ public class BallSpawner : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("SpawnBall", 70f, spawnInterval);
+        InvokeRepeating("SpawnBall", 5f, spawnInterval);
     }
 
     void SpawnBall()
