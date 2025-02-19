@@ -33,6 +33,6 @@ public class TiltPlatform : MonoBehaviour
     {
         float randomX = Random.Range(-maxTiltAngle, maxTiltAngle);
         float randomZ = Random.Range(-maxTiltAngle, maxTiltAngle);
-        targetRotation = new Vector3(randomX, 0f, randomZ);
+        targetRotation = new Vector3(-10f, 0f, randomZ);
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BallDespawner : MonoBehaviour
 {
-    public float despawnHeight = -10f; // Change this threshold as needed
+    public float despawnHeight = -30f; // Change this threshold as needed
 
     void Update()
     {
