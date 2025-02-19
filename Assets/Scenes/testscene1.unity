@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 1254891554}
-  spawnInterval: 2
-  spawnHeight: 200
+  spawnInterval: 1
+  spawnHeight: 70
 --- !u!4 &35128600
 Transform:
   m_ObjectHideFlags: 0
@@ -1098,7 +1098,7 @@ Transform:
   m_GameObject: {fileID: 1254891554}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.29, y: 70, z: 6.83}
+  m_LocalPosition: {x: -3.29, y: 366, z: 153.9}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []

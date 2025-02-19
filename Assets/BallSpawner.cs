@@ -13,7 +13,7 @@ public class BallSpawner : MonoBehaviour
 
     void SpawnBall()
     {
-        Vector3 spawnPosition = new Vector3(Random.Range(-4f, 4f), spawnHeight, Random.Range(-4f, 4f));
+        Vector3 spawnPosition = new Vector3(Random.Range(-40f, 40f), spawnHeight, Random.Range(-40f, 40f));
         Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
     }
 }
