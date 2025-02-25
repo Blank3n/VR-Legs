@@ -2564,11 +2564,12 @@ MonoBehaviour:
   length: 2
   gravity: 9.81
   maxPushForce: 1
+  friction: 0.999
   pushAction:
     m_Name: Push
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 84386657-441e-443f-9681-691ef1cd21b9
+    m_Id: efcb6b59-d652-409b-b72d-b694fb80f2ec
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []

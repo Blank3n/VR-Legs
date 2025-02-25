@@ -4,14 +4,16 @@ using UnityEngine.InputSystem;
 
 public class SwingMotion : MonoBehaviour
 {
-    public float length = 2f; // Length of the swing (affects period)
-    public float gravity = 9.81f; // Acceleration due to gravity
-    public float maxPushForce = 1f; // How much velocity each input adds
-    public InputAction pushAction; // New Input System action for pushing
+    public float length = 2f; // Length of the swing
+    public float gravity = 9.81f; // Gravity effect
+    public float maxPushForce = 1f; // Max force applied when pushing
+    public float friction = 0.999f; // Friction factor to slow the swing over time
+
+    public InputAction pushAction; // Input action for pushing
 
     private float angle = 0f; // Swing angle in degrees
-    private float angularVelocity = 0f; // Current speed of swing
-    private bool isPushing = false; // To prevent holding push indefinitely
+    private float angularVelocity = 0f; // How fast the swing is moving
+    private bool isPushing = false; // Prevents holding push indefinitely
 
     void OnEnable() => pushAction.Enable();
     void OnDisable() => pushAction.Disable();
@@ -20,11 +22,16 @@ public class SwingMotion : MonoBehaviour
     {
         float deltaTime = Time.deltaTime;
 
-        // Calculate angular acceleration using the physics formula: α = - (g / L) * sin(θ)
+        // Calculate angular acceleration using pendulum physics: α = - (g / L) * sin(θ)
         float angularAcceleration = - (gravity / length) * Mathf.Sin(angle * Mathf.Deg2Rad);
 
-        // Update velocity and angle using Euler integration
+        // Update velocity with acceleration
         angularVelocity += angularAcceleration * deltaTime;
+
+        // Apply friction (slows down movement naturally)
+        angularVelocity *= friction;
+
+        // Update the swing angle based on velocity
         angle += angularVelocity * Mathf.Rad2Deg * deltaTime;
 
         // Apply rotation to the swing
@@ -39,12 +46,16 @@ public class SwingMotion : MonoBehaviour
 
     void ApplyPush()
     {
-        // The push should add speed in the direction the swing is moving
-        float pushDirection = Mathf.Sign(angularVelocity);
-        angularVelocity += pushDirection * maxPushForce;
+        // Determine push strength based on motion direction and angle
+        float pushMultiplier = Mathf.Cos(angle * Mathf.Deg2Rad); // -1 when upside down, 1 at bottom
+        float pushDirection = Mathf.Sign(angularVelocity); // 1 if moving forward, -1 if moving backward
+        float pushForce = pushMultiplier * pushDirection * maxPushForce;
+
+        // Apply push force to velocity
+        angularVelocity += pushForce;
         isPushing = true;
 
-        // Reset push state after a short delay (prevents constant push spam)
+        // Reset push state after a short delay
         Invoke(nameof(ResetPush), 0.3f);
     }
 
