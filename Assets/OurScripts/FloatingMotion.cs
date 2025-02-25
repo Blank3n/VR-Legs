@@ -9,7 +9,7 @@ public class FloatingMotion : MonoBehaviour
     public float orbitRadius = 3000f; // Distance from player
     public float respawnTime = 3f; // Time before reappearing
 
-    private Vector3 playerPos = new Vector3(0, 50, 0); // Player's fixed position
+    private Vector3 playerPos = new Vector3(0, 30, 0); // Player's fixed position
     private MeshRenderer meshRenderer;
     private Collider ballCollider;
     private float angle; // Angle for orbit calculation
