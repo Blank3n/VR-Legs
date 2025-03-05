@@ -781,11 +781,11 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5117255724487357858, guid: 89b7081327bff294cb7a8406cea20d40, type: 3}
 --- !u!1001 &640720132
@@ -1338,11 +1338,11 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5117255724487357858, guid: 89b7081327bff294cb7a8406cea20d40, type: 3}
 --- !u!4 &1243682647 stripped
@@ -2091,7 +2091,7 @@ Transform:
   m_GameObject: {fileID: 1739266359}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 139.3, y: 5.5, z: -130.9}
+  m_LocalPosition: {x: 134.8, y: 1.26, z: -105.8}
   m_LocalScale: {x: 2, y: 0.1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2122,9 +2122,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1739266359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85c6dc70deb492349a8da7834e475ec0, type: 3}
+  m_Script: {fileID: 11500000, guid: bd48599a86bbaf24aa1d2f51eb437998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circleCenter: {x: 135, y: 5, z: -100}
+  initialCircleRadius: 20
+  maxCircleRadius: 20
+  initialMinHeight: -10
+  initialMaxHeight: 5
+  maxHeightRange: 5
+  movementSpeed: 5
+  minDistanceToTarget: 1
+  maxDeviationAngle: 30
+  newTargetInterval: 5
+  avoidanceDistance: 5
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  progressionTime: 60
+  tiltStartTime: 30
+  maxTiltAngle: 15
+  tiltSmoothness: 2
 --- !u!1 &1776703599
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,11 +2381,11 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2985712518246779262, guid: 601223d491ea43446ab1a2c7252c7b4d, type: 3}
 --- !u!4 &1871874469 stripped
@@ -2390,11 +2408,11 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5117255724487357858, guid: 89b7081327bff294cb7a8406cea20d40, type: 3}
 --- !u!1001 &1880992446
@@ -2485,11 +2503,11 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5117255724487357858, guid: 89b7081327bff294cb7a8406cea20d40, type: 3}
 --- !u!1001 &1922355157
@@ -2703,11 +2721,11 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5117255724487357858, guid: 89b7081327bff294cb7a8406cea20d40, type: 3}
 --- !u!1001 &2055284740
@@ -2798,11 +2816,11 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2985712518246779262, guid: 601223d491ea43446ab1a2c7252c7b4d, type: 3}
 --- !u!1 &2133660051 stripped
@@ -2825,11 +2843,11 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5117255724487357858, guid: 89b7081327bff294cb7a8406cea20d40, type: 3}
 --- !u!1001 &2779669268269126897
