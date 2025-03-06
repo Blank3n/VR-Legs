@@ -1304,9 +1304,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1181188284}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.375, y: 99.71, z: -1.065}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 10, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 170131242}
@@ -1316,7 +1316,7 @@ Transform:
   - {fileID: 721309667}
   - {fileID: 9673504}
   - {fileID: 1316219136}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1739266363}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1225211559 stripped
 Transform:
@@ -1997,7 +1997,6 @@ GameObject:
   - component: {fileID: 1739266362}
   - component: {fileID: 1739266361}
   - component: {fileID: 1739266360}
-  - component: {fileID: 1739266364}
   - component: {fileID: 1739266365}
   m_Layer: 0
   m_Name: StandingPlatform
@@ -2096,23 +2095,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 953153063}
+  - {fileID: 1181188285}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1739266364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739266359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71a5acc0d9fea2a4f881de283192cc78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tiltSpeed: 1
-  maxTiltAngle: 50
-  changeInterval: 0.5
 --- !u!114 &1739266365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2127,11 +2112,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circleCenter: {x: 135, y: 5, z: -100}
   initialCircleRadius: 20
-  maxCircleRadius: 20
+  maxCircleRadius: 30
   initialMinHeight: -10
   initialMaxHeight: 5
   maxHeightRange: 5
-  movementSpeed: 5
+  startSpeed: 2
+  maxSpeed: 20
+  speedIncrease: 0.001
   minDistanceToTarget: 1
   maxDeviationAngle: 30
   newTargetInterval: 5
@@ -2143,6 +2130,7 @@ MonoBehaviour:
   tiltStartTime: 30
   maxTiltAngle: 15
   tiltSmoothness: 2
+  movementSpeed: 5
 --- !u!1 &1776703599
 GameObject:
   m_ObjectHideFlags: 0
@@ -2817,7 +2805,7 @@ MeshCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
   m_Convex: 1
@@ -3240,7 +3228,6 @@ SceneRoots:
   - {fileID: 713524624}
   - {fileID: 1739266363}
   - {fileID: 32013634}
-  - {fileID: 1181188285}
   - {fileID: 1776703602}
   - {fileID: 1941203419}
   - {fileID: 904253879}

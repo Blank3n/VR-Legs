@@ -8,10 +8,12 @@ public class SmoothFlyingPlatformWithProgressiveDimensionsAndTilting : MonoBehav
     public float initialMinHeight = 0f; // Initial minimum height (Y position)
     public float initialMaxHeight = 10f; // Initial maximum height (Y position)
     public float maxHeightRange = 20f; // Maximum height range the platform can reach
-    public float movementSpeed = 5f;
-    public float minDistanceToTarget = 1f;
+    public float startSpeed = 5f; // Initial movement speed
+    public float maxSpeed = 20f; // Maximum movement speed
+    public float speedIncrease = 0.001f; // Speed increase per frame
+    public float minDistanceToTarget = 1f; // Minimum distance to target before choosing a new one
     public float maxDeviationAngle = 30f; // Maximum angle deviation from the current direction
-    public float newTargetInterval = 5f;
+    public float newTargetInterval = 5f; // Time interval to set a new target
     public float avoidanceDistance = 5f; // Distance to check for obstacles
     public LayerMask obstacleLayer; // LayerMask for obstacles
 
@@ -20,17 +22,19 @@ public class SmoothFlyingPlatformWithProgressiveDimensionsAndTilting : MonoBehav
     public float maxTiltAngle = 15f; // Maximum tilt angle in degrees
     public float tiltSmoothness = 2f; // Smoothness of tilting (higher values = smoother)
 
-    private Vector3 targetPosition;
-    private float timer;
-    private float progressionTimer;
-    private float currentCircleRadius;
-    private float currentMinHeight;
-    private float currentMaxHeight;
-    private Quaternion targetTilt;
-    private bool isTilting = false;
+    private float movementSpeed; // Current movement speed
+    private Vector3 targetPosition; // Current target position
+    private float timer; // Timer for new target intervals
+    private float progressionTimer; // Timer for progression
+    private float currentCircleRadius; // Current circle radius
+    private float currentMinHeight; // Current minimum height
+    private float currentMaxHeight; // Current maximum height
+    private Quaternion targetTilt; // Target tilt rotation
+    private bool isTilting = false; // Whether tilting is active
 
     void Start()
     {
+        movementSpeed = startSpeed;
         currentCircleRadius = initialCircleRadius;
         currentMinHeight = initialMinHeight;
         currentMaxHeight = initialMaxHeight;
@@ -72,6 +76,12 @@ public class SmoothFlyingPlatformWithProgressiveDimensionsAndTilting : MonoBehav
             timer = 0f;
         }
 
+        // Update movement speed
+        if (movementSpeed < maxSpeed)
+        {
+            movementSpeed += speedIncrease * Time.deltaTime; // Scale speed increase with time
+        }
+
         // Move the platform
         MovePlatform();
 
@@ -85,7 +95,7 @@ public class SmoothFlyingPlatformWithProgressiveDimensionsAndTilting : MonoBehav
     void SetRandomTargetPosition()
     {
         // Generate a random position within the current circular map and height range
-        Vector2 randomDirection = Random.insideUnitCircle.normalized;
+        Vector2 randomDirection = Random.insideUnitCircle; // Remove .normalized to distribute targets evenly
         float randomHeight = Random.Range(currentMinHeight, currentMaxHeight);
         targetPosition = circleCenter + new Vector3(randomDirection.x * currentCircleRadius, randomHeight, randomDirection.y * currentCircleRadius);
     }
