@@ -2116,7 +2116,7 @@ MonoBehaviour:
   initialMinHeight: -10
   initialMaxHeight: 5
   maxHeightRange: 5
-  startSpeed: 2
+  startSpeed: 5
   maxSpeed: 20
   speedIncrease: 0.001
   minDistanceToTarget: 1
@@ -2130,7 +2130,6 @@ MonoBehaviour:
   tiltStartTime: 30
   maxTiltAngle: 15
   tiltSmoothness: 2
-  movementSpeed: 5
 --- !u!1 &1776703599
 GameObject:
   m_ObjectHideFlags: 0
