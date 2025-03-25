@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4ca42a1e1d084b041b41a6c85540b424
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233721
+  packageName: 'UNDERPOLY: Free Generic Airship'
+  packageVersion: 2.2
+  assetPath: Assets/UNDERPOLY - Free Generic Airship/Graphics/Renderer/URP/URP_GlobalSettings.asset
+  uploadId: 621834

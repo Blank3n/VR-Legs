@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6cabb10089f043b48a5657c6f35d8143
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233721
+  packageName: 'UNDERPOLY: Free Generic Airship'
+  packageVersion: 2.2
+  assetPath: Assets/UNDERPOLY - Free Generic Airship/Graphics/Renderer/Built-In/PostProcessingProfile.asset
+  uploadId: 621834

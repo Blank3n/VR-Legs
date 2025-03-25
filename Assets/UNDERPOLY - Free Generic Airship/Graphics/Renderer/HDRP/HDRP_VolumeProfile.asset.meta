@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 71fa765d815aeae45bad647d6ee34e6e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233721
+  packageName: 'UNDERPOLY: Free Generic Airship'
+  packageVersion: 2.2
+  assetPath: Assets/UNDERPOLY - Free Generic Airship/Graphics/Renderer/HDRP/HDRP_VolumeProfile.asset
+  uploadId: 621834

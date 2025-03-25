@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7703d9c956eedf6479f6913baf203fdb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 233721
+  packageName: 'UNDERPOLY: Free Generic Airship'
+  packageVersion: 2.2
+  assetPath: Assets/UNDERPOLY - Free Generic Airship/Graphics/Renderer/HDRP/HDRP_Asset.asset
+  uploadId: 621834
