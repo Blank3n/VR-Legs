@@ -5,10 +5,9 @@ public class XRPositionReset : MonoBehaviour
     public Transform skateboard;  // The moving skateboard
     private Transform vrCamera;   // The Main Camera (VR headset)
 
-    // Set movement limits (player should stay within -0.5 to 0.5 on X and Z)
     public float limitX = 0.5f;
     public float limitZ = 0.5f;
-
+    
     void Start()
     {
         vrCamera = Camera.main?.transform;
@@ -26,34 +25,38 @@ public class XRPositionReset : MonoBehaviour
         }
     }
 
+
     void LateUpdate()
     {
         if (vrCamera == null || skateboard == null) return;
 
-        // Calculate the combined world position of Main Camera and XR Origin
-        Vector3 combinedPosition = vrCamera.position + transform.position;
-        Vector3 xrOriginPosition = transform.position;
+        // Get camera's local position relative to XR Origin
+        Vector3 cameraLocalPos = vrCamera.localPosition;
+        Vector3 XRLocalPos = transform.localPosition;
 
         bool needsReset = false;
 
-        // Check if outside X bounds
-        if (Mathf.Abs(combinedPosition.x) > limitX)
+        // Correct X-axis
+        if (Mathf.Abs(cameraLocalPos.x + XRLocalPos.x) > limitX)
         {
-            xrOriginPosition.x += Mathf.Sign(combinedPosition.x) * limitX;
+            Debug.LogError("x pos + pos = " + cameraLocalPos.x + " " + XRLocalPos.x);
+            
+            XRLocalPos.x = 0-cameraLocalPos.x;
             needsReset = true;
         }
 
-        // Check if outside Z bounds
-        if (Mathf.Abs(combinedPosition.z) > limitZ)
+        // Correct Z-axis
+        if (Mathf.Abs(cameraLocalPos.z + XRLocalPos.z) > limitZ)
         {
-            xrOriginPosition.z += Mathf.Sign(combinedPosition.z) * limitZ;
+            XRLocalPos.z = 0-cameraLocalPos.z;
+            Debug.LogError("z pos + pos = " + cameraLocalPos.z + " " + XRLocalPos.z);
             needsReset = true;
         }
 
-        // Apply correction if needed
+        // Apply correction (snap instantly)
         if (needsReset)
         {
-            transform.position = xrOriginPosition;
+            transform.localPosition = XRLocalPos;
         }
     }
 }
