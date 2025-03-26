@@ -6,7 +6,7 @@ public class ModularPathSkateboard : MonoBehaviour
     [Header("Path settings")]
     public Transform[] pathSegments; // Dra in path-segmenten i rätt ordning
     public float speed = 5f;
-    public float rotationSpeed = 5f;
+    public float rotationSpeed = 2f;
     public bool loop = true;
 
     private List<Transform> allWaypoints = new List<Transform>();
