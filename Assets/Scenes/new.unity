@@ -791,7 +791,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8298045291338814966, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1810099706}
+      addedObject: {fileID: 1810099701}
     - targetCorrespondingSourceObject: {fileID: 7277802327528778795, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       insertIndex: -1
       addedObject: {fileID: 321678434}
@@ -1991,6 +1991,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skateboard
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ab38b4f815fb2cb40ac232142f1ddd38, type: 3}
+      propertyPath: m_Name
+      value: SkateboardModel
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ab38b4f815fb2cb40ac232142f1ddd38, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.5
@@ -2525,7 +2529,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8298045291338814965, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
   m_PrefabInstance: {fileID: 538237581}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1810099706
+--- !u!114 &1810099701
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2534,9 +2538,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1810099699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 284b33a2b209655419ed7037df917f5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 56ea762b5d8d16d4382d80dbe1b8383d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skateboard: {fileID: 63604749}
+  limitX: 0.5
+  limitZ: 0.5
 --- !u!1 &1816592768
 GameObject:
   m_ObjectHideFlags: 0
@@ -2784,7 +2791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d33e0fd4e8d04d91856a961c92e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableWobble: 1
+  enableWobble: 0
   wobbleStrength: 5
   wobbleSpeed: 5
 --- !u!1 &2048422053
