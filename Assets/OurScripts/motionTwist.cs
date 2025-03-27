@@ -5,9 +5,7 @@ public class motionTwist : MonoBehaviour
     public bool enableTwist = true;
     public float twistStrength = 10f;
     public float twistDuration = 1f;
-
-    public enum TwistFrequency { Slow, Normal, Fast }
-    public TwistFrequency twistFrequency = TwistFrequency.Normal;
+    public float twistInterval = 4f; // Justerbar i Inspector
 
     private float nextTwistTime = 0f;
     private Quaternion targetRotation;
@@ -17,7 +15,7 @@ public class motionTwist : MonoBehaviour
     void Start()
     {
         targetRotation = transform.rotation;
-        nextTwistTime = Time.time + GetTwistInterval();
+        nextTwistTime = Time.time + twistInterval;
     }
 
     void Update()
@@ -28,7 +26,7 @@ public class motionTwist : MonoBehaviour
             targetRotation = Quaternion.Euler(0f, transform.eulerAngles.y + twist, 0f);
             isTwisting = true;
             twistTimer = 0f;
-            nextTwistTime = Time.time + GetTwistInterval();
+            nextTwistTime = Time.time + twistInterval;
         }
 
         if (isTwisting)
@@ -39,16 +37,6 @@ public class motionTwist : MonoBehaviour
 
             if (t >= 1f)
                 isTwisting = false;
-        }
-    }
-
-    private float GetTwistInterval()
-    {
-        switch (twistFrequency)
-        {
-            case TwistFrequency.Fast: return 2f;
-            case TwistFrequency.Slow: return 6f;
-            default: return 4f;
         }
     }
 }
