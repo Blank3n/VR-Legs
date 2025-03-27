@@ -408,6 +408,25 @@ MonoBehaviour:
   twistFrequency: 0
   twistStrength: 180
   twistDuration: 1
+--- !u!114 &63604752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63604747}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce071bed85e1b5468b2814b9d1a1458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiltScript: {fileID: 1177643019}
+  wobbleScript: {fileID: 2047617436}
+  twistScript: {fileID: 801627702}
+  tiltStartTime: 5
+  wobbleStartTime: 10
+  twistStartTime: 15
+  escalateTime: 20
 --- !u!1001 &67302887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2680,7 +2699,7 @@ MonoBehaviour:
   enableTwist: 0
   twistStrength: 180
   twistDuration: 1
-  twistFrequency: 1
+  twistInterval: 3
 --- !u!1 &808150765
 GameObject:
   m_ObjectHideFlags: 0
@@ -4435,6 +4454,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: ab38b4f815fb2cb40ac232142f1ddd38, type: 3}
       insertIndex: -1
       addedObject: {fileID: 63604751}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: ab38b4f815fb2cb40ac232142f1ddd38, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 63604752}
   m_SourcePrefab: {fileID: 100100000, guid: ab38b4f815fb2cb40ac232142f1ddd38, type: 3}
 --- !u!1001 &1448743829
 PrefabInstance:
@@ -6591,7 +6613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableWobble: 0
   wobbleStrength: 5
-  wobbleSpeed: 5
+  wobbleSpeed: 3
 --- !u!1 &2048422053
 GameObject:
   m_ObjectHideFlags: 0
