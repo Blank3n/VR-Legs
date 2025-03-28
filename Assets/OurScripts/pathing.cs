@@ -29,7 +29,36 @@ public class ModularPathSkateboard : MonoBehaviour
             transform.position = allWaypoints[0].position;
         }
     }
+    void OnDrawGizmos()
+    {
+        if (pathSegments == null || pathSegments.Length == 0) return;
 
+        // Combine all waypoints (if not already done in Start)
+        List<Transform> waypoints = new List<Transform>();
+        foreach (Transform segment in pathSegments)
+        {
+            foreach (Transform waypoint in segment)
+            {
+                waypoints.Add(waypoint);
+            }
+        }
+
+        // Draw lines between waypoints
+        Gizmos.color = Color.red;
+        for (int i = 0; i < waypoints.Count - 1; i++)
+        {
+            if (waypoints[i] != null && waypoints[i + 1] != null)
+            {
+                Gizmos.DrawLine(waypoints[i].position, waypoints[i + 1].position);
+            }
+        }
+
+        // Close the loop if enabled
+        if (loop && waypoints.Count > 1)
+        {
+            Gizmos.DrawLine(waypoints[waypoints.Count - 1].position, waypoints[0].position);
+        }
+    }
     void Update()
     {
         if (allWaypoints.Count == 0) return;
@@ -59,5 +88,6 @@ public class ModularPathSkateboard : MonoBehaviour
                     enabled = false; // Stanna när sista waypoint är nådd
             }
         }
+        
     }
 }
