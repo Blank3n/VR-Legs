@@ -1,46 +1,102 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MotionSequenceManager : MonoBehaviour
 {
+    [Header("Waypoint Path (alla i ordning)")]
+    public Transform[] waypoints;
+
+    [Header("Path Segment Settings")]
+    public List<PathSegment> pathSegments;
+
+    [Header("Motion Effects")]
     public motionTilt tiltScript;
     public motionWobble wobbleScript;
     public motionTwist twistScript;
+    public motionLag lagScript;
 
-    public float tiltStartTime = 10f;
-    public float wobbleStartTime = 20f;
-    public float twistStartTime = 30f;
-    public float escalateTime = 45f;
-
-    private float timer = 0f;
+    private int currentWaypointIndex = 0;
+    private int currentPathIndex = 0;
 
     void Start()
     {
-        // Inaktivera allt i början
-        tiltScript.enableTilt = false;
-        wobbleScript.enableWobble = false;
-        twistScript.enableTwist = false;
+        if (pathSegments == null || pathSegments.Count == 0)
+        {
+            Debug.LogError("❌ PathSegments saknas.");
+            enabled = false;
+            return;
+        }
+
+        if (waypoints == null || waypoints.Length == 0)
+        {
+            Debug.LogError("❌ Waypoints saknas.");
+            enabled = false;
+            return;
+        }
+
+        ApplySettingsForCurrentPath();
     }
 
     void Update()
     {
-        timer += Time.deltaTime;
+        if (currentWaypointIndex >= waypoints.Length) return;
 
-        if (timer >= tiltStartTime && !tiltScript.enableTilt)
-            tiltScript.enableTilt = true;
+        Transform currentWaypoint = waypoints[currentWaypointIndex];
+        float distance = Vector3.Distance(transform.position, currentWaypoint.position);
 
-        if (timer >= wobbleStartTime && !wobbleScript.enableWobble)
-            wobbleScript.enableWobble = true;
-
-        if (timer >= twistStartTime && !twistScript.enableTwist)
-            twistScript.enableTwist = true;
-
-        if (timer >= escalateTime)
+        if (distance < 0.2f)
         {
-            // Öka styrkan gradvis efter tid
-            tiltScript.tiltStrength = Mathf.Lerp(10f, 30f, (timer - escalateTime) / 30f);
-            wobbleScript.wobbleStrength = Mathf.Lerp(5f, 25f, (timer - escalateTime) / 30f);
-            twistScript.twistStrength = Mathf.Lerp(10f, 45f, (timer - escalateTime) / 30f);
-            twistScript.twistInterval = Mathf.Lerp(6f, 2f, (timer - escalateTime) / 30f); // snabbare twist
+            currentWaypointIndex++;
+
+            if (currentPathIndex + 1 < pathSegments.Count)
+            {
+                Transform nextPath = pathSegments[currentPathIndex + 1].segment;
+                if (currentWaypoint.parent == nextPath)
+                {
+                    currentPathIndex++;
+                    ApplySettingsForCurrentPath();
+                }
+            }
         }
+    }
+
+    void ApplySettingsForCurrentPath()
+    {
+        var settings = pathSegments[currentPathIndex];
+
+        // Tilt
+        if (tiltScript != null)
+        {
+            tiltScript.enableTilt = settings.enableTilt;
+            tiltScript.tiltStrength = settings.tiltStrength;
+            tiltScript.tiltSpeed = settings.tiltSpeed;
+        }
+
+        // Wobble
+        if (wobbleScript != null)
+        {
+            wobbleScript.enableWobble = settings.enableWobble;
+            wobbleScript.wobbleStrength = settings.wobbleStrength;
+            wobbleScript.wobbleSpeed = settings.wobbleSpeed;
+        }
+
+        // Twist
+        if (twistScript != null)
+        {
+            twistScript.enableTwist = settings.enableTwist;
+            twistScript.twistStrength = settings.twistStrength;
+            twistScript.twistDuration = settings.twistDuration;
+            twistScript.twistInterval = settings.twistInterval;
+        }
+
+        // Motion Lag
+        if (lagScript != null)
+        {
+            lagScript.enableLag = settings.enableMotionLag;
+            lagScript.targetFPS = settings.targetFPS;
+            lagScript.timeBetweenJumps = settings.timeBetweenJumps;
+        }
+
+        Debug.Log($"▶️ Bytte till path: {settings.segment.name} | Tilt: {settings.enableTilt}, Wobble: {settings.enableWobble}, Twist: {settings.enableTwist}, Lag: {settings.enableMotionLag}");
     }
 }

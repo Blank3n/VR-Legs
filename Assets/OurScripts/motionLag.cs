@@ -6,8 +6,8 @@ public class motionLag : MonoBehaviour
     public bool enableLag = true;
 
     [Header("FPS-inställningar")]
-    public int targetFPS = 15; // t.ex. 15 för rejält ryckigt
-    public float timeBetweenJumps = 5f; // hur ofta vi växlar FPS
+    public int targetFPS = 15; // Låg FPS-nivå vid lagg
+    public float timeBetweenJumps = 5f; // Hur ofta vi växlar FPS
 
     private float nextToggleTime;
     private bool isLagging = false;
@@ -24,8 +24,13 @@ public class motionLag : MonoBehaviour
         if (Time.time >= nextToggleTime)
         {
             isLagging = !isLagging;
-            Application.targetFrameRate = isLagging ? targetFPS : 90; // 90 för VR
+            Application.targetFrameRate = isLagging ? targetFPS : 90;
             nextToggleTime = Time.time + timeBetweenJumps;
         }
+    }
+
+    void OnDisable()
+    {
+        Application.targetFrameRate = 90; // Säkerställ normal FPS om script stängs av
     }
 }
