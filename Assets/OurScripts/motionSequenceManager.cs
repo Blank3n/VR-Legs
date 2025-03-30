@@ -15,6 +15,9 @@ public class MotionSequenceManager : MonoBehaviour
     public motionTwist twistScript;
     public motionLag lagScript;
 
+    [Header("Sound Control")]
+    public MotionSoundController soundController;
+
     private int currentWaypointIndex = 0;
     private int currentPathIndex = 0;
 
@@ -95,6 +98,15 @@ public class MotionSequenceManager : MonoBehaviour
             lagScript.enableLag = settings.enableMotionLag;
             lagScript.targetFPS = settings.targetFPS;
             lagScript.timeBetweenJumps = settings.timeBetweenJumps;
+        }
+
+        // Sound
+        if (soundController != null)
+        {
+            soundController.SetTilt(settings.enableTilt);
+            soundController.SetWobble(settings.enableWobble);
+            soundController.SetTwist(settings.enableTwist);
+            soundController.SetLag(settings.enableMotionLag);
         }
 
         Debug.Log($"▶️ Bytte till path: {settings.segment.name} | Tilt: {settings.enableTilt}, Wobble: {settings.enableWobble}, Twist: {settings.enableTwist}, Lag: {settings.enableMotionLag}");
