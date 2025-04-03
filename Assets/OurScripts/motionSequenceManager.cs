@@ -14,6 +14,7 @@ public class MotionSequenceManager : MonoBehaviour
     public motionWobble wobbleScript;
     public motionTwist twistScript;
     public motionLag lagScript;
+    public motionSwing swingScript;
 
     [Header("Sound Control")]
     public MotionSoundController soundController;
@@ -98,6 +99,15 @@ public class MotionSequenceManager : MonoBehaviour
             lagScript.enableLag = settings.enableMotionLag;
             lagScript.targetFPS = settings.targetFPS;
             lagScript.timeBetweenJumps = settings.timeBetweenJumps;
+        }
+
+        // Swing
+        if (swingScript != null)
+        {
+            swingScript.enableSwing = settings.enableSwing;
+            swingScript.length = settings.length;
+            swingScript.gravity = settings.gravity;
+            swingScript.maxPushForce = settings.maxPushForce;
         }
 
         // Sound

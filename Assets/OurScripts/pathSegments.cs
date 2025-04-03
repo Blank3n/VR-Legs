@@ -25,4 +25,11 @@ public class PathSegment
     public bool enableMotionLag;
     public int targetFPS = 15;
     public float timeBetweenJumps = 5f;
+
+    [Header("Motion Swing-inställningar")]
+    public bool enableSwing;
+    public float length = 2f; // Length of the swing
+    public float gravity = 9.81f; // Gravity effect
+    public float maxPushForce = 1f; // Max force applied when pushing
+
 }
