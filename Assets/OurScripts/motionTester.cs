@@ -1,35 +1,55 @@
 using UnityEngine;
 
-public class motionTester : MonoBehaviour
+public class motionTesterVR : MonoBehaviour
 {
-    [Header("Tilt (fram/bak)")]
+    [Header("Tilt Settings")]
     public bool enableTilt = false;
-    public float tiltStrength = 10f;
-    public float tiltSpeed = 1.5f;
+    public float tiltBaseStrength = 10f;
+    public float tiltBaseSpeed = 1.5f;
+    public float tiltStrengthVariation = 5f;
+    public float tiltSpeedVariation = 0.5f;
+    public float tiltChangeInterval = 3f;
 
-    [Header("Wobble (sidorotation)")]
+    [Header("Wobble Settings")]
     public bool enableWobble = false;
-    public float wobbleStrength = 5f;
-    public float wobbleSpeed = 5f;
+    public float wobbleBaseStrength = 5f;
+    public float wobbleBaseSpeed = 5f;
+    public float wobbleStrengthVariation = 3f;
+    public float wobbleSpeedVariation = 1f;
+    public float wobbleChangeInterval = 3f;
 
-    [Header("Speed Variation (ryckig fart)")]
-    public bool enableSpeedVariation = false;
-    public float baseSpeed = 5f;
-    public float speedVariation = 2f;
+    [Header("Jitter (slumpmässiga ryck)")]
+    public bool enableJitter = false;
+    public float jitterAmount = 0.02f;
 
-    public enum TwistFrequency
-    {
-        Slow,
-        Normal,
-        Fast
-    }
+    [Header("Zoom Pulsing")]
+    public bool enableZoom = false;
+    public float zoomSpeed = 2f;
+    public float zoomStrength = 0.05f;
+    private Vector3 originalScale;
 
-    [Header("Sudden Random Twist")]
+    [Header("Drift")]
+    public bool enableDrift = false;
+    public Vector3 driftDirection = new Vector3(0.1f, 0, 0);
+    public float driftSpeed = 0.5f;
+
+    [Header("Vertical Bobbing")]
+    public bool enableBobbing = false;
+    public float bobbingHeight = 0.1f;
+    public float bobbingSpeed = 1f;
+    private float baseY;
+
+    [Header("Twist")]
     public bool enableRandomTwist = false;
-    public TwistFrequency twistFrequency = TwistFrequency.Normal;
-    public float twistStrength = 10f;
+    public float twistStrength = 90f;
     public float twistDuration = 1f;
+    public float twistInterval = 4f;
 
+
+    // Internal runtime values
+    private float tiltTimer, wobbleTimer;
+    private float currentTiltStrength, currentTiltSpeed, tiltPhaseOffset;
+    private float currentWobbleStrength, currentWobbleSpeed, wobblePhaseOffset;
     private float nextTwistTime = 0f;
     private Quaternion targetRotation;
     private bool isTwisting = false;
@@ -37,49 +57,92 @@ public class motionTester : MonoBehaviour
 
     void Start()
     {
-        nextTwistTime = Time.time + GetTwistInterval();
-        targetRotation = transform.rotation;
+
+
+        RandomizeTilt();
+        RandomizeWobble();
     }
 
     void Update()
     {
-        Quaternion totalRotation = Quaternion.identity;
+    Quaternion rotation = Quaternion.identity;
 
-        // TILT
-        if (enableTilt)
+    // Tilt
+    if (enableTilt)
+    {
+        tiltTimer += Time.deltaTime;
+        if (tiltTimer >= tiltChangeInterval)
         {
-            float tilt = Mathf.Sin(Time.time * tiltSpeed) * tiltStrength;
-            totalRotation *= Quaternion.Euler(tilt, 0f, 0f);
+            RandomizeTilt();
+            tiltTimer = 0f;
         }
 
-        // WOBBLE
-        if (enableWobble)
+        float tilt = Mathf.Sin(Time.time * currentTiltSpeed + tiltPhaseOffset) * currentTiltStrength;
+        rotation *= Quaternion.Euler(0f, 0f, tilt);
+    }
+
+    // Wobble
+    if (enableWobble)
+    {
+        wobbleTimer += Time.deltaTime;
+        if (wobbleTimer >= wobbleChangeInterval)
         {
-            float wobble = Mathf.Sin(Time.time * wobbleSpeed) * wobbleStrength;
-            totalRotation *= Quaternion.Euler(0f, 0f, wobble);
+            RandomizeWobble();
+            wobbleTimer = 0f;
         }
 
-        // APPLY BASE ROTATION (tilt/wobble)
-        transform.localRotation = totalRotation;
+        float wobble = Mathf.Sin(Time.time * currentWobbleSpeed + wobblePhaseOffset) * currentWobbleStrength;
+        rotation *= Quaternion.Euler(wobble, 0f, 0f);
+    }
 
-        // SPEED VARIATION
-        if (enableSpeedVariation)
+    transform.localRotation = rotation;
+
+        // Apply rotation
+        transform.localRotation = rotation;
+
+        // Jitter
+        if (enableJitter)
         {
-            float variableSpeed = baseSpeed + Mathf.Sin(Time.time * 2f) * speedVariation;
-            transform.position += transform.forward * variableSpeed * Time.deltaTime;
+            Vector3 jitter = new Vector3(
+                Random.Range(-jitterAmount, jitterAmount),
+                Random.Range(-jitterAmount, jitterAmount),
+                Random.Range(-jitterAmount, jitterAmount)
+            );
+            transform.localPosition += jitter;
         }
 
-        // STARTA TWIST OM DET ÄR DAGS
+        // Drift
+        if (enableDrift)
+        {
+            transform.position += driftDirection.normalized * driftSpeed * Time.deltaTime;
+        }
+
+        // Bobbing
+        if (enableBobbing)
+        {
+            float offsetY = Mathf.Sin(Time.time * bobbingSpeed) * bobbingHeight;
+            Vector3 pos = transform.position;
+            pos.y = baseY + offsetY;
+            transform.position = pos;
+        }
+
+        // Zoom pulsing
+        if (enableZoom)
+        {
+            float scaleOffset = Mathf.Sin(Time.time * zoomSpeed) * zoomStrength;
+            transform.localScale = originalScale + Vector3.one * scaleOffset;
+        }
+
+        // Twist
         if (enableRandomTwist && !isTwisting && Time.time >= nextTwistTime)
         {
             float twistAmount = Random.Range(-twistStrength, twistStrength);
             targetRotation = Quaternion.Euler(0f, transform.eulerAngles.y + twistAmount, 0f);
             isTwisting = true;
             twistTimer = 0f;
-            nextTwistTime = Time.time + GetTwistInterval();
+            nextTwistTime = Time.time + twistInterval;
         }
 
-        // UTFÖR TWISTEN GRADVIS
         if (isTwisting)
         {
             twistTimer += Time.deltaTime;
@@ -87,22 +150,25 @@ public class motionTester : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, t);
 
             if (t >= 1f)
-            {
                 isTwisting = false;
-            }
         }
     }
 
-    private float GetTwistInterval()
+    void RandomizeTilt()
     {
-        switch (twistFrequency)
-        {
-            case TwistFrequency.Fast:
-                return 2f;
-            case TwistFrequency.Slow:
-                return 6f;
-            default:
-                return 4f;
-        }
+        currentTiltSpeed = Random.Range(0.5f, 2.5f);
+        currentTiltStrength = Random.Range(5f, 20f);
+        tiltPhaseOffset = Random.Range(0f, Mathf.PI * 2);
+        tiltChangeInterval = Random.Range(2f, 6f);
+        tiltTimer = 0f;
+    }
+
+    void RandomizeWobble()
+    {
+        currentWobbleSpeed = Random.Range(1f, 3f);
+        currentWobbleStrength = Random.Range(5f, 15f);
+        wobblePhaseOffset = Random.Range(0f, Mathf.PI * 2);
+        wobbleChangeInterval = Random.Range(2f, 6f);
+        wobbleTimer = 0f;
     }
 }
