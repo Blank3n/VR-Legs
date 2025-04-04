@@ -5,6 +5,10 @@ public class PathSegment
 {
     public Transform segment;
 
+    [Header("Path Movement")]
+    public float speed = 5f;
+    public float rotationSpeed = 2f;
+
     [Header("Tilt-inställningar")]
     public bool enableTilt;
     public float tiltStrength = 10f;
@@ -26,10 +30,9 @@ public class PathSegment
     public int targetFPS = 15;
     public float timeBetweenJumps = 5f;
 
-    [Header("Motion Swing-inställningar")]
+    [Header("Swing-inställningar")]
     public bool enableSwing;
-    public float length = 2f; // Length of the swing
-    public float gravity = 9.81f; // Gravity effect
-    public float maxPushForce = 1f; // Max force applied when pushing
-
+    public float length = 2f;
+    public float gravity = 9.81f;
+    public float maxPushForce = 1f;
 }

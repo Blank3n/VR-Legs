@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class MotionSequenceManager : MonoBehaviour
 {
+    [Header("Pathing")]
+    public ModularPathSkateboard pathingScript;
+
     [Header("Waypoint Path (alla i ordning)")]
     public Transform[] waypoints;
 
@@ -51,7 +54,13 @@ public class MotionSequenceManager : MonoBehaviour
         if (distance < 0.2f)
         {
             currentWaypointIndex++;
-            if (currentWaypointIndex >= waypoints.Length) currentWaypointIndex = 0;
+            if (currentWaypointIndex >= waypoints.Length)
+            {
+                currentWaypointIndex = 0;
+                currentPathIndex = 0;
+                ApplySettingsForCurrentPath();
+                return;
+            }
 
             if (currentPathIndex + 1 < pathSegments.Count)
             {
@@ -61,12 +70,6 @@ public class MotionSequenceManager : MonoBehaviour
                     currentPathIndex++;
                     ApplySettingsForCurrentPath();
                 }
-            }
-            else 
-            {
-                Debug.Log($"Ute ur If-statement");
-                currentPathIndex = 0;
-                ApplySettingsForCurrentPath();
             }
         }
     }
@@ -126,6 +129,13 @@ public class MotionSequenceManager : MonoBehaviour
             soundController.SetLag(settings.enableMotionLag);
         }
 
-        Debug.Log($"▶️ Bytte till path: {settings.segment.name} | Tilt: {settings.enableTilt}, Wobble: {settings.enableWobble}, Twist: {settings.enableTwist}, Swing: {settings.enableSwing}, Lag: {settings.enableMotionLag}");
+        // Path Speed & Rotation
+        if (pathingScript != null)
+        {
+            pathingScript.currentSpeed = settings.speed;
+            pathingScript.currentRotationSpeed = settings.rotationSpeed;
+        }
+
+        Debug.Log($"▶️ Bytte till path: {settings.segment.name} | Speed: {settings.speed}, Rotation: {settings.rotationSpeed}");
     }
 }
