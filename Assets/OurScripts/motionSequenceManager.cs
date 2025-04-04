@@ -64,7 +64,9 @@ public class MotionSequenceManager : MonoBehaviour
             }
             else 
             {
+                Debug.Log($"Ute ur If-statement");
                 currentPathIndex = 0;
+                ApplySettingsForCurrentPath();
             }
         }
     }
@@ -124,6 +126,6 @@ public class MotionSequenceManager : MonoBehaviour
             soundController.SetLag(settings.enableMotionLag);
         }
 
-        Debug.Log($"▶️ Bytte till path: {settings.segment.name} | Tilt: {settings.enableTilt}, Wobble: {settings.enableWobble}, Twist: {settings.enableTwist}, Lag: {settings.enableMotionLag}");
+        Debug.Log($"▶️ Bytte till path: {settings.segment.name} | Tilt: {settings.enableTilt}, Wobble: {settings.enableWobble}, Twist: {settings.enableTwist}, Swing: {settings.enableSwing}, Lag: {settings.enableMotionLag}");
     }
 }

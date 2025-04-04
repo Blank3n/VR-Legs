@@ -8993,7 +8993,7 @@ MonoBehaviour:
   - {fileID: 1326074479}
   - {fileID: 400146805}
   - {fileID: 1618350436}
-  speed: 15
+  speed: 30
   rotationSpeed: 2
   loop: 1
 --- !u!4 &892267569
