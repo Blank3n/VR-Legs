@@ -9,19 +9,22 @@ public class ModularPathSkateboard : MonoBehaviour
     public float rotationSpeed = 2f;
     public bool loop = true;
     
+    /*  SWING
     [Header("Pendulum Settings")]
     public bool enableSwing = true;
     public float pendulumLength = 2f;
     public float pendulumGravity = 9.81f;
     public float maxPushForce = 1f;
     public float pendulumFriction = 0.999f;
+    */
 
     private List<Transform> allWaypoints = new List<Transform>();
     private int currentIndex = 0;
-    private bool isSwinging = false;
-    private float pendulumAngle = 0f;
-    private float pendulumVelocity = 0f;
-    private Quaternion initialRotation;
+    //private bool isSwinging = false;
+    //private float pendulumAngle = 0f;
+    //private float pendulumVelocity = 0f;
+    //private Quaternion initialRotation;
+
 
     void Start()
     {
@@ -42,6 +45,7 @@ public class ModularPathSkateboard : MonoBehaviour
 
     void Update()
     {
+        /*  SWING
         if (isSwinging)
         {
             // Exact pendulum physics from SwingMotion
@@ -57,6 +61,7 @@ public class ModularPathSkateboard : MonoBehaviour
             transform.rotation = initialRotation * Quaternion.Euler(0, pendulumAngle, 0);
             return;
         }
+        */
 
         // Original movement code (unchanged)
         if (allWaypoints.Count == 0) return;
@@ -80,10 +85,12 @@ public class ModularPathSkateboard : MonoBehaviour
                 {
                     currentIndex = 0;
                 }
+                /*  SWING
                 else if (enableSwing)
                 {
                     StartPendulumSwing();
                 }
+                */
                 else
                 {
                     enabled = false;
@@ -92,6 +99,7 @@ public class ModularPathSkateboard : MonoBehaviour
         }
     }
 
+    /*  SWING
     void StartPendulumSwing()
     {
         isSwinging = true;
@@ -101,6 +109,7 @@ public class ModularPathSkateboard : MonoBehaviour
         // Give a small initial push (like the VR controller would)
         pendulumVelocity = maxPushForce * 0.3f; 
     }
+    */
 
     // Original Gizmos code remains unchanged
     void OnDrawGizmos()
