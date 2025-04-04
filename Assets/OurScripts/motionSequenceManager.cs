@@ -51,6 +51,7 @@ public class MotionSequenceManager : MonoBehaviour
         if (distance < 0.2f)
         {
             currentWaypointIndex++;
+            if (currentWaypointIndex >= waypoints.Length) currentWaypointIndex = 0;
 
             if (currentPathIndex + 1 < pathSegments.Count)
             {
@@ -60,6 +61,10 @@ public class MotionSequenceManager : MonoBehaviour
                     currentPathIndex++;
                     ApplySettingsForCurrentPath();
                 }
+            }
+            else 
+            {
+                currentPathIndex = 0;
             }
         }
     }
