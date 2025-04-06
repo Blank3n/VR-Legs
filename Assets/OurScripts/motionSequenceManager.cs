@@ -18,6 +18,7 @@ public class MotionSequenceManager : MonoBehaviour
     public motionTwist twistScript;
     public motionLag lagScript;
     public motionSwing swingScript;
+    public motionSpin spinScript;
 
     [Header("Sound Control")]
     public MotionSoundController soundController;
@@ -118,6 +119,13 @@ public class MotionSequenceManager : MonoBehaviour
             swingScript.length = settings.length;
             swingScript.gravity = settings.gravity;
             swingScript.maxPushForce = settings.maxPushForce;
+        }
+
+        // Spin
+        if (spinScript != null)
+        {
+            spinScript.enableSpin = settings.enableSpin;
+            spinScript.rotSpeed = settings.rotSpeed;
         }
 
         // Sound
