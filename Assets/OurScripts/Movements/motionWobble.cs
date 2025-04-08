@@ -8,9 +8,14 @@ public class motionWobble : MonoBehaviour
 
     void Update()
     {
-        if (!enableWobble) return;
+        if (!enableWobble)
+        {
+            transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+            return;
+        }
 
         float wobble = Mathf.Sin(Time.time * wobbleSpeed) * wobbleStrength;
+
         transform.localRotation = Quaternion.Euler(0f, 0f, wobble);
     }
 }

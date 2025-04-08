@@ -8,9 +8,14 @@ public class motionTilt : MonoBehaviour
 
     void Update()
     {
-        if (!enableTilt) return;
+        if (!enableTilt)
+        {
+            transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+            return;
+        }
 
         float tilt = Mathf.Sin(Time.time * tiltSpeed) * tiltStrength;
+
         transform.localRotation = Quaternion.Euler(tilt, 0f, 0f);
     }
 }
