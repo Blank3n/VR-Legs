@@ -1,5 +1,34 @@
 {
     "name": "XRInputActions",
-    "maps": [],
+    "maps": [
+        {
+            "name": "XRGameplay",
+            "id": "b06e9222-b548-4c32-8237-0ce4c33881a5",
+            "actions": [
+                {
+                    "name": "PCSPress",
+                    "type": "Button",
+                    "id": "7fcdb494-f739-464e-822b-7e8e4913731a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7f454cc7-85b9-46e7-a63f-5303dfac86a6",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PCSPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
     "controlSchemes": []
 }
