@@ -5,9 +5,10 @@ public class PathSegment
 {
     public Transform segment;
 
-    [Header("Path Movement")]
-    public float speed = 5f;
-    public float rotationSpeed = 2f;
+    [Header("Speed Transition")]
+    public float startSpeed = 0f;
+    public float targetSpeed = 5f;
+    public float accelerationDuration = 2f;
 
     [Header("Tilt-inställningar")]
     public bool enableTilt;
@@ -38,5 +39,6 @@ public class PathSegment
 
     [Header("Swing-inställningar")]
     public bool enableSpin = true;
-    public float rotSpeed = 1f;
+    public float rotationSpeed = 0f;
 }
+ 
