@@ -26,6 +26,13 @@ public class MotionSequenceManager : MonoBehaviour
     private int currentWaypointIndex = 0;
     private int currentPathIndex = 0;
 
+     // Farthantering
+    private float currentSpeed = 0f;
+    private float startSpeed = 0f;
+    private float targetSpeed = 0f;
+    private float accelerationDuration = 0f;
+    private float speedTimer = 0f;
+
     void Start()
     {
         if (pathSegments == null || pathSegments.Count == 0)
@@ -49,6 +56,23 @@ public class MotionSequenceManager : MonoBehaviour
     {
         if (currentWaypointIndex >= waypoints.Length) return;
 
+        // 🟢 Farthantering med acceleration/inbromsning
+        if (accelerationDuration > 0f)
+        {
+            speedTimer += Time.deltaTime;
+            float t = Mathf.Clamp01(speedTimer / accelerationDuration);
+            currentSpeed = Mathf.Lerp(startSpeed, targetSpeed, t);
+        }
+        else
+        {
+            currentSpeed = targetSpeed;
+        }
+
+        if (pathingScript != null)
+        {
+            pathingScript.currentSpeed = currentSpeed;
+        }
+        //Waypoint hantering
         Transform currentWaypoint = waypoints[currentWaypointIndex];
         float distance = Vector3.Distance(transform.position, currentWaypoint.position);
 
@@ -137,12 +161,24 @@ public class MotionSequenceManager : MonoBehaviour
             soundController.SetLag(settings.enableMotionLag);
         }
 
-        // Path Speed & Rotation
-        if (pathingScript != null)
+        // 🟢 Uppdatera fartkurva
+        if (settings.useAcceleration)
         {
-            pathingScript.currentSpeed = settings.speed;
-            pathingScript.currentRotationSpeed = settings.rotationSpeed;
+            startSpeed = settings.startSpeed;
+            targetSpeed = settings.targetSpeed;
+            accelerationDuration = settings.accelerationDuration;
+            speedTimer = 0f;
+            currentSpeed = startSpeed;
         }
+        else
+        {
+            startSpeed = settings.targetSpeed;
+            targetSpeed = settings.targetSpeed;
+            accelerationDuration = 0f;
+            speedTimer = 0f;
+            currentSpeed = targetSpeed;
+        }
+
 
         Debug.Log($"▶️ Bytte till path: {settings.segment.name} | Speed: {settings.speed}, Rotation: {settings.rotationSpeed}");
     }

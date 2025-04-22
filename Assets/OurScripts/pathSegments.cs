@@ -4,10 +4,15 @@ using UnityEngine;
 public class PathSegment
 {
     public Transform segment;
+    
 
     [Header("Path Movement")]
-    public float speed = 5f;
+    public bool useAcceleration = true;
+    public float startSpeed = 0f;
+    public float targetSpeed = 5f;
+    public float accelerationDuration = 2f;
     public float rotationSpeed = 2f;
+    public float speed = 5f;
 
     [Header("Tilt-inställningar")]
     public bool enableTilt;
