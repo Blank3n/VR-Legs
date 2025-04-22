@@ -18,19 +18,13 @@ public class MotionSequenceManager : MonoBehaviour
     public motionTwist twistScript;
     public motionLag lagScript;
     public motionSwing swingScript;
+    public motionSpin spinScript;
 
     [Header("Sound Control")]
     public MotionSoundController soundController;
 
     private int currentWaypointIndex = 0;
     private int currentPathIndex = 0;
-
-    // Farthantering
-    private float currentSpeed = 0f;
-    private float startSpeed = 0f;
-    private float targetSpeed = 0f;
-    private float accelerationDuration = 0f;
-    private float speedTimer = 0f;
 
     void Start()
     {
@@ -55,31 +49,12 @@ public class MotionSequenceManager : MonoBehaviour
     {
         if (currentWaypointIndex >= waypoints.Length) return;
 
-        // 🟢 Farthantering med acceleration/inbromsning
-        if (accelerationDuration > 0f)
-        {
-            speedTimer += Time.deltaTime;
-            float t = Mathf.Clamp01(speedTimer / accelerationDuration);
-            currentSpeed = Mathf.Lerp(startSpeed, targetSpeed, t);
-        }
-        else
-        {
-            currentSpeed = targetSpeed;
-        }
-
-        if (pathingScript != null)
-        {
-            pathingScript.currentSpeed = currentSpeed;
-        }
-
-        // 🟡 Waypoint-hantering
         Transform currentWaypoint = waypoints[currentWaypointIndex];
         float distance = Vector3.Distance(transform.position, currentWaypoint.position);
 
         if (distance < 0.2f)
         {
             currentWaypointIndex++;
-
             if (currentWaypointIndex >= waypoints.Length)
             {
                 currentWaypointIndex = 0;
@@ -97,10 +72,6 @@ public class MotionSequenceManager : MonoBehaviour
                     ApplySettingsForCurrentPath();
                 }
             }
-            else
-            {
-                currentPathIndex = 0;
-            }
         }
     }
 
@@ -108,7 +79,7 @@ public class MotionSequenceManager : MonoBehaviour
     {
         var settings = pathSegments[currentPathIndex];
 
-        // Motion scripts
+        // Tilt
         if (tiltScript != null)
         {
             tiltScript.enableTilt = settings.enableTilt;
@@ -116,6 +87,7 @@ public class MotionSequenceManager : MonoBehaviour
             tiltScript.tiltSpeed = settings.tiltSpeed;
         }
 
+        // Wobble
         if (wobbleScript != null)
         {
             wobbleScript.enableWobble = settings.enableWobble;
@@ -123,6 +95,7 @@ public class MotionSequenceManager : MonoBehaviour
             wobbleScript.wobbleSpeed = settings.wobbleSpeed;
         }
 
+        // Twist
         if (twistScript != null)
         {
             twistScript.enableTwist = settings.enableTwist;
@@ -131,6 +104,7 @@ public class MotionSequenceManager : MonoBehaviour
             twistScript.twistInterval = settings.twistInterval;
         }
 
+        // Motion Lag
         if (lagScript != null)
         {
             lagScript.enableLag = settings.enableMotionLag;
@@ -138,6 +112,7 @@ public class MotionSequenceManager : MonoBehaviour
             lagScript.timeBetweenJumps = settings.timeBetweenJumps;
         }
 
+        // Swing
         if (swingScript != null)
         {
             swingScript.enableSwing = settings.enableSwing;
@@ -146,6 +121,14 @@ public class MotionSequenceManager : MonoBehaviour
             swingScript.maxPushForce = settings.maxPushForce;
         }
 
+        // Spin
+        if (spinScript != null)
+        {
+            spinScript.enableSpin = settings.enableSpin;
+            spinScript.rotSpeed = settings.rotSpeed;
+        }
+
+        // Sound
         if (soundController != null)
         {
             soundController.SetTilt(settings.enableTilt);
@@ -154,19 +137,13 @@ public class MotionSequenceManager : MonoBehaviour
             soundController.SetLag(settings.enableMotionLag);
         }
 
-        // 🟢 Uppdatera fartkurva
-        startSpeed = settings.startSpeed;
-        targetSpeed = settings.targetSpeed;
-        accelerationDuration = settings.accelerationDuration;
-        speedTimer = 0f;
-        currentSpeed = startSpeed;
-
+        // Path Speed & Rotation
         if (pathingScript != null)
         {
+            pathingScript.currentSpeed = settings.speed;
             pathingScript.currentRotationSpeed = settings.rotationSpeed;
         }
 
-        Debug.Log($"▶️ Segment {currentPathIndex} | {startSpeed} → {targetSpeed} på {accelerationDuration}s");
+        Debug.Log($"▶️ Bytte till path: {settings.segment.name} | Speed: {settings.speed}, Rotation: {settings.rotationSpeed}");
     }
 }
- 
