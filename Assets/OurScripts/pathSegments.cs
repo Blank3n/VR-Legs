@@ -37,7 +37,7 @@ public class PathSegment
     public float gravity = 9.81f;
     public float maxPushForce = 1f;
 
-    [Header("Spin-inställningar")]
+    [Header("Swing-inställningar")]
     public bool enableSpin = true;
     public float rotationSpeed = 0f;
 }
