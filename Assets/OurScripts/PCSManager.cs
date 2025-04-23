@@ -16,6 +16,9 @@ public class PCSManager : MonoBehaviour
     [Header("Check Settings")]
     public int totalChecks = 10;
 
+    [Header("Anti-Spam Settings")]
+    public int spamThreshold = 3;
+
     [Header("Input")]
     public InputActionReference participationButton;
 
@@ -30,6 +33,8 @@ public class PCSManager : MonoBehaviour
     private bool inputReceived = false;
     private int successCount = 0;
     private int checksCompleted = 0;
+    private int spamCount = 0;
+    private bool spammedThisCheck = false;
 
     private TextMeshProUGUI cueText;
     private Color originalTextColor;
@@ -40,6 +45,10 @@ public class PCSManager : MonoBehaviour
         originalTextColor = cueText.color;
 
         visualCue.SetActive(false);
+
+        participationButton.action.Enable();
+        participationButton.action.performed += HandleButtonPress;
+
         StartCoroutine(PCSLoop());
     }
 
@@ -59,6 +68,9 @@ public class PCSManager : MonoBehaviour
 
     private IEnumerator RunParticipationCheck()
     {
+        spammedThisCheck = spamCount >= spamThreshold;
+        spamCount = 0;
+
         cueActive = true;
         inputReceived = false;
 
@@ -66,41 +78,52 @@ public class PCSManager : MonoBehaviour
         cueText.color = originalTextColor;
         visualCue.SetActive(true);
 
-        participationButton.action.performed += OnButtonPressed;
-        participationButton.action.Enable();
-
         yield return new WaitForSeconds(cueDuration);
 
         cueActive = false;
-        visualCue.SetActive(false);
 
-        participationButton.action.performed -= OnButtonPressed;
-        participationButton.action.Disable();
-
-        if (inputReceived)
+        if (inputReceived && !spammedThisCheck)
         {
             successCount++;
             Debug.Log("✅ PCS: Player participated.");
+            // Cue already turns green & hides in OnButtonPressed()
         }
         else
         {
-            Debug.Log("❌ PCS: Player did NOT participate.");
+            if (spammedThisCheck)
+                Debug.Log("❌ PCS: Player failed due to spamming.");
+            else
+                Debug.Log("❌ PCS: Player did NOT participate.");
+
+            // 🔴 Turn text red for 0.2s before hiding
+            cueText.color = Color.red;
+            yield return new WaitForSeconds(0.2f);
+            visualCue.SetActive(false);
         }
 
         checksCompleted++;
     }
 
-    private void OnButtonPressed(InputAction.CallbackContext context)
+    private void HandleButtonPress(InputAction.CallbackContext context)
     {
-        if (cueActive && !inputReceived)
+        if (!cueActive)
         {
-            inputReceived = true;
-
-            // ✅ Visual feedback: text turns green
-            cueText.color = Color.green;
-
-            // ⏳ Wait 0.2s before hiding the cue
-            StartCoroutine(DisableVisualAfterDelay(0.2f));
+            spamCount++;
+            Debug.Log("Button press detected OUTSIDE cue.");
+        }
+        else if (cueActive && !inputReceived)
+        {
+            if (!spammedThisCheck)
+            {
+                inputReceived = true;
+                cueText.color = Color.green;
+                Debug.Log("Button press detected DURING cue.");
+                StartCoroutine(DisableVisualAfterDelay(0.2f));
+            }
+            else
+            {
+                Debug.Log("Ignored input: This check is failed due to spamming.");
+            }
         }
     }
 
@@ -115,5 +138,13 @@ public class PCSManager : MonoBehaviour
         cueText.text = string.Format(scoreMessageFormat, successCount, totalChecks);
         cueText.color = originalTextColor;
         visualCue.SetActive(true);
+    }
+
+    private void OnDestroy()
+    {
+        if (participationButton != null && participationButton.action != null)
+        {
+            participationButton.action.performed -= HandleButtonPress;
+        }
     }
 }
