@@ -44,4 +44,9 @@ public class PathSegment
     [Header("Spin-inställningar")]
     public bool enableSpin = true;
     public float rotSpeed = 1f;
+
+    [Header("Ljusinställningar")]
+    public bool adjustLight = false;
+    public Light targetLight;
+    public float lightIntensity = 1f;
 }

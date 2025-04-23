@@ -179,6 +179,17 @@ public class MotionSequenceManager : MonoBehaviour
             currentSpeed = targetSpeed;
         }
 
+        // Ljusinställningar
+        if (settings.adjustLight && settings.targetLight != null)
+        {
+            var fader = settings.targetLight.GetComponent<LightFader>();
+            if (fader != null)
+            {
+                fader.SetTargetIntensity(settings.lightIntensity);
+            }
+        }
+
+
 
         Debug.Log($"▶️ Bytte till path: {settings.segment.name} | Speed: {settings.speed}, Rotation: {settings.rotationSpeed}");
     }
