@@ -16,7 +16,6 @@ public class MotionSequenceManager : MonoBehaviour
     public motionTilt tiltScript;
     public motionWobble wobbleScript;
     public motionTwist twistScript;
-    public motionLag lagScript;
     public motionSwing swingScript;
     public motionSpin spinScript;
 
@@ -128,13 +127,6 @@ public class MotionSequenceManager : MonoBehaviour
             twistScript.twistInterval = settings.twistInterval;
         }
 
-        // Motion Lag
-        if (lagScript != null)
-        {
-            lagScript.enableLag = settings.enableMotionLag;
-            lagScript.targetFPS = settings.targetFPS;
-            lagScript.timeBetweenJumps = settings.timeBetweenJumps;
-        }
 
         // Swing
         if (swingScript != null)
@@ -158,7 +150,6 @@ public class MotionSequenceManager : MonoBehaviour
             soundController.SetTilt(settings.enableTilt);
             soundController.SetWobble(settings.enableWobble);
             soundController.SetTwist(settings.enableTwist);
-            soundController.SetLag(settings.enableMotionLag);
         }
 
         // 🟢 Uppdatera fartkurva
