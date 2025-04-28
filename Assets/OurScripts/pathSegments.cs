@@ -30,10 +30,6 @@ public class PathSegment
     public float twistDuration = 1f;
     public float twistInterval = 4f;
 
-    [Header("Motion Lag-inställningar")]
-    public bool enableMotionLag;
-    public int targetFPS = 15;
-    public float timeBetweenJumps = 5f;
 
     [Header("Swing-inställningar")]
     public bool enableSwing;
