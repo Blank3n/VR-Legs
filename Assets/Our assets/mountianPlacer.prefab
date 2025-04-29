@@ -395,19 +395,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7599874387633480938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17ae6408b02c2e745bea200373f881ba, type: 3}
+  m_Script: {fileID: 11500000, guid: d53585ad3d018f14694e71b797fe8357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mountainPrefab: {fileID: 0}
-  numberOfMountains: 6
-  baseRadius: 3440
-  radiusVariation: 0
+  numberOfMountains: 12
+  baseRadius: 100
+  radiusVariation: 10
   baseScale: {x: 50, y: 30}
-  scaleVariation: {x: 0, y: 0}
-  baseHeight: 750
-  heightVariation: 0
+  scaleVariation: {x: 10, y: 5}
+  baseHeight: -10
+  heightVariation: 5
   rotationOffset: 0
-  updateInRealTime: 0
+  updateInRealTime: 1
   generateMountains: 0
   clearMountains: 0
 --- !u!1 &8931437670528396575
