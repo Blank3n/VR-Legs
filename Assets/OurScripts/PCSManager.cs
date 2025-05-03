@@ -36,6 +36,8 @@ public class PCSManager : MonoBehaviour
     private int spamCount = 0;
     private bool spammedThisCheck = false;
 
+    private float compensationTime = 0;
+
     private TextMeshProUGUI cueText;
     private Color originalTextColor;
 
@@ -57,12 +59,13 @@ public class PCSManager : MonoBehaviour
         while (checksCompleted < totalChecks)
         {
             float waitTime = baseInterval + Random.Range(-surpriseOffset, surpriseOffset);
+            float compensationTime = -surpriseOffset;
             yield return new WaitForSeconds(waitTime);
 
             yield return StartCoroutine(RunParticipationCheck());
         }
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds((5f + compensationTime));
         ShowFinalResult();
     }
 

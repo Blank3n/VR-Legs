@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 14403929}
   - component: {fileID: 14403930}
   m_Layer: 0
-  m_Name: PCSManager
+  m_Name: PCSManager FINAL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,7 +273,7 @@ MonoBehaviour:
   cueDuration: 3
   baseInterval: 10
   surpriseOffset: 3
-  totalChecks: 6
+  totalChecks: 14
   spamThreshold: 3
   participationButton: {fileID: 2570418559984924981, guid: 9222422a9a04ce74db34a6f3e28a8359, type: 3}
   checkPromptText: 'Press: --- (A) --- for Points'
@@ -907,10 +907,10 @@ MonoBehaviour:
     twistStrength: 0
     twistDuration: 0
     twistInterval: 0
-    enableSwing: 0
-    length: 0
-    gravity: 0
-    maxPushForce: 0
+    enableSwing: 1
+    length: 1
+    gravity: 9.82
+    maxPushForce: 1
     enableSpin: 0
     rotSpeed: 1
     adjustLight: 1
@@ -3169,7 +3169,7 @@ GameObject:
   - component: {fileID: 517484845}
   - component: {fileID: 517484846}
   m_Layer: 0
-  m_Name: spinBody
+  m_Name: spinBody FINAL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4809,7 +4809,7 @@ Transform:
   m_GameObject: {fileID: 751972843}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0001519537, y: 2, z: -0.00001493856}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11154,6 +11154,59 @@ Transform:
   - {fileID: 1788123345}
   m_Father: {fileID: 1846954989}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1375358048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1375358050}
+  - component: {fileID: 1375358049}
+  m_Layer: 0
+  m_Name: PCSManager TEST 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1375358049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375358048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e45c4f4fd5a501b47acc219f3dfd7dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualCue: {fileID: 202251294}
+  cueDuration: 3
+  baseInterval: 10
+  surpriseOffset: 3
+  totalChecks: 6
+  spamThreshold: 3
+  participationButton: {fileID: 2570418559984924981, guid: 9222422a9a04ce74db34a6f3e28a8359, type: 3}
+  checkPromptText: 'Press: --- (A) --- for Points'
+  scoreMessageFormat: 'Score: {0} / {1}'
+--- !u!4 &1375358050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375358048}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -40.277977, y: -3.989852, z: -365.7029}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1375376708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15687,6 +15740,7 @@ SceneRoots:
   - {fileID: 1009309352}
   - {fileID: 791092118}
   - {fileID: 14403929}
+  - {fileID: 1375358050}
   - {fileID: 1043918892}
   - {fileID: 985118517}
   - {fileID: 1345051416}

@@ -19,7 +19,13 @@ public class motionTwist : MonoBehaviour
     }
 
     void Update()
-    {
+    {   
+        if (!enableTwist)
+        {
+            transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+            return;
+        }
+
         if (enableTwist && !isTwisting && Time.time >= nextTwistTime)
         {
             float twist = Random.Range(-twistStrength, twistStrength);
