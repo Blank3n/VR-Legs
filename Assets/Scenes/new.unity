@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e45c4f4fd5a501b47acc219f3dfd7dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualCue: {fileID: 202251294}
+  visualCue: {fileID: 280670227}
   cueDuration: 3
   baseInterval: 10
   surpriseOffset: 3
@@ -937,7 +937,7 @@ MonoBehaviour:
     length: 0
     gravity: 0
     maxPushForce: 0
-    enableSpin: 0
+    enableSpin: 1
     rotSpeed: 1
     adjustLight: 1
     targetLight: {fileID: 1527849184}
@@ -1180,7 +1180,7 @@ MonoBehaviour:
   wobbleScript: {fileID: 362354470}
   twistScript: {fileID: 616119645}
   swingScript: {fileID: 751972845}
-  spinScript: {fileID: 1874970149}
+  spinScript: {fileID: 517484846}
   soundController: {fileID: 1009309351}
 --- !u!114 &105590739
 MonoBehaviour:
@@ -1959,7 +1959,7 @@ GameObject:
   - component: {fileID: 202251297}
   - component: {fileID: 202251296}
   m_Layer: 5
-  m_Name: PCS-Canvas
+  m_Name: PCS-Canvas TEST 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2261,7 +2261,7 @@ GameObject:
   - component: {fileID: 280670230}
   - component: {fileID: 280670229}
   m_Layer: 5
-  m_Name: PCS-Canvas
+  m_Name: PCS-Canvas Final
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2581,7 +2581,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 867548133}
+  - {fileID: 517484845}
   - {fileID: 624416992}
   m_Father: {fileID: 1933094395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3158,6 +3158,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1250684413}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &517484844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 517484845}
+  - component: {fileID: 517484846}
+  m_Layer: 0
+  m_Name: spinBody
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &517484845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517484844}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 867548133}
+  m_Father: {fileID: 362354469}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &517484846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517484844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f44df7f30513d2240a38f164666d4a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableSpin: 1
+  rotSpeed: 1
 --- !u!1 &536892952
 GameObject:
   m_ObjectHideFlags: 0
@@ -4265,7 +4312,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 362354469}
+    m_TransformParent: {fileID: 517484845}
     m_Modifications:
     - target: {fileID: 2243020122175513880, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_SizeDelta.x
@@ -4589,7 +4636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8298045291338814965, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 162.43073
+      value: 162.43082
       objectReference: {fileID: 0}
     - target: {fileID: 8298045291338814965, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4597,7 +4644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8298045291338814965, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 270.0412
+      value: 270.04138
       objectReference: {fileID: 0}
     - target: {fileID: 8298045291338814965, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
       propertyPath: m_LocalRotation.w
