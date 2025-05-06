@@ -273,7 +273,7 @@ MonoBehaviour:
   cueDuration: 3
   baseInterval: 10
   surpriseOffset: 3
-  totalChecks: 14
+  totalChecks: 13
   spamThreshold: 3
   participationButton: {fileID: 2570418559984924981, guid: 9222422a9a04ce74db34a6f3e28a8359, type: 3}
   checkPromptText: 'Press: --- (A) --- for Points'
@@ -907,7 +907,7 @@ MonoBehaviour:
     twistStrength: 0
     twistDuration: 0
     twistInterval: 0
-    enableSwing: 1
+    enableSwing: 0
     length: 1
     gravity: 9.82
     maxPushForce: 1
@@ -923,21 +923,21 @@ MonoBehaviour:
     accelerationDuration: 0
     rotationSpeed: 0
     speed: 0
-    enableTilt: 1
+    enableTilt: 0
     tiltStrength: 10
-    tiltSpeed: 5
+    tiltSpeed: 4
     enableWobble: 0
-    wobbleStrength: 0
-    wobbleSpeed: 0
-    enableTwist: 0
-    twistStrength: 0
-    twistDuration: 0
-    twistInterval: 0
+    wobbleStrength: 12
+    wobbleSpeed: 7
+    enableTwist: 1
+    twistStrength: 105
+    twistDuration: 2
+    twistInterval: 0.5
     enableSwing: 0
-    length: 0
-    gravity: 0
-    maxPushForce: 0
-    enableSpin: 1
+    length: 1
+    gravity: 1
+    maxPushForce: 1
+    enableSpin: 0
     rotSpeed: 1
     adjustLight: 1
     targetLight: {fileID: 1527849184}
@@ -949,12 +949,12 @@ MonoBehaviour:
     accelerationDuration: 0
     rotationSpeed: 0
     speed: 0
-    enableTilt: 0
-    tiltStrength: 10
+    enableTilt: 1
+    tiltStrength: 12
     tiltSpeed: 5
-    enableWobble: 1
+    enableWobble: 0
     wobbleStrength: 12
-    wobbleSpeed: 7
+    wobbleSpeed: 5
     enableTwist: 0
     twistStrength: 0
     twistDuration: 0
@@ -978,12 +978,12 @@ MonoBehaviour:
     enableTilt: 0
     tiltStrength: 0
     tiltSpeed: 0
-    enableWobble: 0
-    wobbleStrength: 0
-    wobbleSpeed: 0
-    enableTwist: 1
-    twistStrength: 360
-    twistDuration: 0.1
+    enableWobble: 1
+    wobbleStrength: 12
+    wobbleSpeed: 4
+    enableTwist: 0
+    twistStrength: 105
+    twistDuration: 2
     twistInterval: 0.5
     enableSwing: 0
     length: 1
@@ -1001,20 +1001,20 @@ MonoBehaviour:
     accelerationDuration: 0.5
     rotationSpeed: 0
     speed: 15
-    enableTilt: 1
-    tiltStrength: 8
-    tiltSpeed: 6
-    enableWobble: 1
-    wobbleStrength: 7
-    wobbleSpeed: 5
+    enableTilt: 0
+    tiltStrength: 12
+    tiltSpeed: 4
+    enableWobble: 0
+    wobbleStrength: 12
+    wobbleSpeed: 3
     enableTwist: 0
     twistStrength: 0
     twistDuration: 0
     twistInterval: 0
-    enableSwing: 0
-    length: 5
-    gravity: 2
-    maxPushForce: 1
+    enableSwing: 1
+    length: 4
+    gravity: 9.81
+    maxPushForce: 1.7
     enableSpin: 0
     rotSpeed: 1
     adjustLight: 1
@@ -1028,19 +1028,19 @@ MonoBehaviour:
     rotationSpeed: 0
     speed: 7
     enableTilt: 1
-    tiltStrength: 10
+    tiltStrength: 12
     tiltSpeed: 5
     enableWobble: 1
     wobbleStrength: 12
-    wobbleSpeed: 7
-    enableTwist: 1
-    twistStrength: 360
+    wobbleSpeed: 4
+    enableTwist: 0
+    twistStrength: 105
     twistDuration: 0.3
     twistInterval: 0.5
     enableSwing: 0
-    length: 1
-    gravity: 1
-    maxPushForce: 2
+    length: 4
+    gravity: 9.81
+    maxPushForce: 1
     enableSpin: 0
     rotSpeed: 2
     adjustLight: 1
@@ -1050,20 +1050,20 @@ MonoBehaviour:
     useAcceleration: 1
     startSpeed: 7
     targetSpeed: 20
-    accelerationDuration: 0.3
+    accelerationDuration: 1.5
     rotationSpeed: 0
     speed: 20
     enableTilt: 1
-    tiltStrength: 10
+    tiltStrength: 12
     tiltSpeed: 5
     enableWobble: 1
     wobbleStrength: 12
-    wobbleSpeed: 7
-    enableTwist: 0
-    twistStrength: 0
-    twistDuration: 0
-    twistInterval: 0
-    enableSwing: 1
+    wobbleSpeed: 4
+    enableTwist: 1
+    twistStrength: 90
+    twistDuration: 2
+    twistInterval: 0.5
+    enableSwing: 0
     length: 1
     gravity: 1
     maxPushForce: 1
@@ -1076,23 +1076,23 @@ MonoBehaviour:
     useAcceleration: 1
     startSpeed: 20
     targetSpeed: 7
-    accelerationDuration: 0.5
+    accelerationDuration: 1.5
     rotationSpeed: 0
     speed: 7
-    enableTilt: 0
-    tiltStrength: 10
+    enableTilt: 1
+    tiltStrength: 12
     tiltSpeed: 5
-    enableWobble: 0
+    enableWobble: 1
     wobbleStrength: 12
-    wobbleSpeed: 7
-    enableTwist: 1
-    twistStrength: 360
-    twistDuration: 0.2
+    wobbleSpeed: 4
+    enableTwist: 0
+    twistStrength: 90
+    twistDuration: 2
     twistInterval: 0.5
     enableSwing: 1
-    length: 2
-    gravity: 5
-    maxPushForce: 1
+    length: 4
+    gravity: 9.81
+    maxPushForce: 2
     enableSpin: 0
     rotSpeed: 2
     adjustLight: 1
@@ -1106,21 +1106,21 @@ MonoBehaviour:
     rotationSpeed: 0
     speed: 15
     enableTilt: 1
-    tiltStrength: 20
+    tiltStrength: 15
     tiltSpeed: 5
     enableWobble: 1
-    wobbleStrength: 19
-    wobbleSpeed: 7
+    wobbleStrength: 15
+    wobbleSpeed: 4
     enableTwist: 0
-    twistStrength: 0
+    twistStrength: 90
     twistDuration: 0
     twistInterval: 0
     enableSwing: 1
-    length: 6
-    gravity: 5
-    maxPushForce: 3
+    length: 1
+    gravity: 1
+    maxPushForce: 1
     enableSpin: 0
-    rotSpeed: 5
+    rotSpeed: 2
     adjustLight: 1
     targetLight: {fileID: 1527849184}
     lightIntensity: 0.5
@@ -1132,20 +1132,20 @@ MonoBehaviour:
     rotationSpeed: 0
     speed: 10
     enableTilt: 1
-    tiltStrength: 25
-    tiltSpeed: 12
+    tiltStrength: 15
+    tiltSpeed: 4
     enableWobble: 1
-    wobbleStrength: 28
-    wobbleSpeed: 15
+    wobbleStrength: 15
+    wobbleSpeed: 3
     enableTwist: 0
-    twistStrength: 0
-    twistDuration: 0
-    twistInterval: 0
+    twistStrength: 90
+    twistDuration: 2
+    twistInterval: 0.5
     enableSwing: 1
-    length: 6
-    gravity: 5
-    maxPushForce: 3
-    enableSpin: 1
+    length: 8
+    gravity: 9.81
+    maxPushForce: 1.5
+    enableSpin: 0
     rotSpeed: 7
     adjustLight: 1
     targetLight: {fileID: 1527849184}
