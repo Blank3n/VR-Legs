@@ -41,6 +41,9 @@ public class PCSManager : MonoBehaviour
     private TextMeshProUGUI cueText;
     private Color originalTextColor;
 
+    private Coroutine pcsLoopCoroutine;
+    private bool gameStarted = false;
+
     void Start()
     {
         cueText = visualCue.GetComponentInChildren<TextMeshProUGUI>();
@@ -48,14 +51,24 @@ public class PCSManager : MonoBehaviour
 
         visualCue.SetActive(false);
 
-        participationButton.action.Enable();
-        participationButton.action.performed += HandleButtonPress;
+        participationButton.action.Enable(); // Ensure participation button is enabled from the start
 
-        StartCoroutine(PCSLoop());
+        participationButton.action.performed += HandleButtonPress;
+    }
+
+    private void StartGame()
+    {
+        if (gameStarted) return; // Prevent starting the game loop again
+
+        gameStarted = true;
+        Debug.Log("PCSManager: Game started. Beginning PCS Loop. STARTGAME");
+        pcsLoopCoroutine = StartCoroutine(PCSLoop());
     }
 
     private IEnumerator PCSLoop()
     {
+        Debug.Log("PCSManager: Running PCS Loop.");
+
         while (checksCompleted < totalChecks)
         {
             float waitTime = baseInterval + Random.Range(-surpriseOffset, surpriseOffset);
@@ -89,7 +102,6 @@ public class PCSManager : MonoBehaviour
         {
             successCount++;
             Debug.Log("✅ PCS: Player participated.");
-            // Cue already turns green & hides in OnButtonPressed()
         }
         else
         {
@@ -98,7 +110,6 @@ public class PCSManager : MonoBehaviour
             else
                 Debug.Log("❌ PCS: Player did NOT participate.");
 
-            // 🔴 Turn text red for 0.2s before hiding
             cueText.color = Color.red;
             yield return new WaitForSeconds(0.2f);
             visualCue.SetActive(false);
@@ -149,5 +160,14 @@ public class PCSManager : MonoBehaviour
         {
             participationButton.action.performed -= HandleButtonPress;
         }
+    }
+
+    public void StartGameFromManager()
+    {
+        if (gameStarted) return; // Prevent starting the game loop again
+
+        gameStarted = true;
+        Debug.Log("PCSManager: Game started externally. Beginning PCS Loop.");
+        pcsLoopCoroutine = StartCoroutine(PCSLoop());
     }
 }

@@ -1,40 +1,81 @@
 using UnityEngine;
-using UnityEngine.UI;
-
+using UnityEngine.InputSystem;
 
 public class VRStartMenuManager : MonoBehaviour
 {
-    public GameObject startMenuCanvas;              // Assign your canvas here
-    public MonoBehaviour[] experienceScripts;       // Drag any movement scripts here
-    public UnityEngine.XR.Interaction.Toolkit.Interactors.XRRayInteractor leftRayInteractor;
-    public UnityEngine.XR.Interaction.Toolkit.Interactors.XRRayInteractor rightRayInteractor;
+    [Header("UI & Experience")]
+    public GameObject startMenuCanvas;              // The menu canvas to hide
+    public MonoBehaviour[] experienceScripts;       // Scripts to enable when Play is pressed
+
+    [Header("Input")]
+    public InputActionReference startButtonAction;  // Reference to an Input Action (e.g. trigger or A)
+    public InputActionReference participationButtonAction; // Reference to participation button (A)
+
+    private bool hasStarted = false;
 
     private void Start()
     {
-        // Disable logic scripts until player starts
+        // Disable gameplay/experience logic until input is received
         foreach (var script in experienceScripts)
         {
             script.enabled = false;
         }
 
-        // Enable UI interaction raycasters
-        if (leftRayInteractor != null)
-            leftRayInteractor.gameObject.SetActive(true);
-        if (rightRayInteractor != null)
-            rightRayInteractor.gameObject.SetActive(true);
-
         startMenuCanvas.SetActive(true);
+
+        if (startButtonAction != null)
+        {
+            startButtonAction.action.Enable();
+            startButtonAction.action.performed += OnStartButtonPressed;
+        }
+
+        if (participationButtonAction != null)
+        {
+            participationButtonAction.action.Enable(); // Ensure it's enabled from the start
+        }
     }
 
-    public void OnPlayButtonPressed()
+    private void OnStartButtonPressed(InputAction.CallbackContext context)
     {
-        // Enable logic scripts
+        if (hasStarted)
+            return;
+
+        Debug.Log("▶️ Start button pressed. Starting experience.");
+
+        // Enable gameplay/experience
         foreach (var script in experienceScripts)
         {
             script.enabled = true;
         }
 
-        // Optionally hide menu
+        // Call the StartGameFromManager method on PCSManager to begin the PCS check loop
+        PCSManager pcsManager = FindObjectOfType<PCSManager>();
+        if (pcsManager != null)
+        {
+            pcsManager.StartGameFromManager(); // This will start PCSManager's check loop
+        }
+
+        // Ensure participation button input action is enabled for the duration of the game
+        if (participationButtonAction != null)
+        {
+            participationButtonAction.action.Enable(); // Re-enable participation button
+        }
+
+        // Hide the menu
         startMenuCanvas.SetActive(false);
+        hasStarted = true;
+    }
+
+    private void OnDestroy()
+    {
+        if (startButtonAction != null && startButtonAction.action != null)
+        {
+            startButtonAction.action.performed -= OnStartButtonPressed;
+        }
+
+        if (participationButtonAction != null && participationButtonAction.action != null)
+        {
+            participationButtonAction.action.Disable(); // Disable if necessary when done
+        }
     }
 }
