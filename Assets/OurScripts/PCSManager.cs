@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 
+
 public class PCSManager : MonoBehaviour
 {
     [Header("Visual & Timing")]
@@ -43,6 +44,7 @@ public class PCSManager : MonoBehaviour
 
     private Coroutine pcsLoopCoroutine;
     private bool gameStarted = false;
+
 
     void Start()
     {
@@ -149,7 +151,12 @@ public class PCSManager : MonoBehaviour
 
     private void ShowFinalResult()
     {
-        cueText.text = string.Format(scoreMessageFormat, successCount, totalChecks);
+
+        int vrLegsScore = FindObjectOfType<VRScore>().GetFinalScore();
+
+        cueText.text = string.Format(scoreMessageFormat, successCount, totalChecks)
+            + $"\nVR Legs Score: {vrLegsScore}";
+
         cueText.color = originalTextColor;
         visualCue.SetActive(true);
     }
