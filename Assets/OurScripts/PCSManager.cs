@@ -6,6 +6,11 @@ using TMPro;
 
 public class PCSManager : MonoBehaviour
 {
+
+    [Header("Audio")]
+    public AudioSource successAudio;
+    public AudioSource failAudio;
+
     [Header("Visual & Timing")]
     public GameObject visualCue;
     public float cueDuration = 3f;
@@ -104,6 +109,9 @@ public class PCSManager : MonoBehaviour
         {
             successCount++;
             Debug.Log("✅ PCS: Player participated.");
+
+            if (successAudio != null)
+                successAudio.Play(); // 🔊 Spela ljud vid framgång
         }
         else
         {
@@ -111,6 +119,9 @@ public class PCSManager : MonoBehaviour
                 Debug.Log("❌ PCS: Player failed due to spamming.");
             else
                 Debug.Log("❌ PCS: Player did NOT participate.");
+                
+            if (failAudio != null)
+                failAudio.Play(); // 🔊 Spela ljud vid misslyckande
 
             cueText.color = Color.red;
             yield return new WaitForSeconds(0.2f);
@@ -141,6 +152,7 @@ public class PCSManager : MonoBehaviour
                 Debug.Log("Ignored input: This check is failed due to spamming.");
             }
         }
+        
     }
 
     private IEnumerator DisableVisualAfterDelay(float delay)
