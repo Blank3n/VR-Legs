@@ -28,6 +28,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "XRGameplayVRScore",
+            "id": "1778a3d4-b087-45ae-9f50-8634b4450cb0",
+            "actions": [
+                {
+                    "name": "VRLegsPress",
+                    "type": "Button",
+                    "id": "6cc1c007-3291-44fa-9765-0c52db6635c2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0f028d80-8676-40e7-aadc-fe5399b207b4",
+                    "path": "<XRController>{RightHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VRLegsPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

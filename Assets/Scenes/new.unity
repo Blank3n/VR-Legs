@@ -5259,6 +5259,52 @@ MonoBehaviour:
   skateboard: {fileID: 1027213595}
   limitX: 0.5
   limitZ: 0.5
+--- !u!1 &826286837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 826286839}
+  - component: {fileID: 826286838}
+  m_Layer: 0
+  m_Name: VRScore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &826286838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826286837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eaccae9c89ed9a438a0b972fc3601d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxScore: 100
+  vrLegsPressAction: {fileID: 8094972720237943353, guid: 9222422a9a04ce74db34a6f3e28a8359, type: 3}
+--- !u!4 &826286839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826286837}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.603943, y: 2.5489159, z: -143.13625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &834456157
 GameObject:
   m_ObjectHideFlags: 0
@@ -12449,7 +12495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8070499686316302217, guid: dfe16fc58b06279499a950bf03db77b6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16469,3 +16515,4 @@ SceneRoots:
   - {fileID: 1345051416}
   - {fileID: 1624550569}
   - {fileID: 1285355701}
+  - {fileID: 826286839}

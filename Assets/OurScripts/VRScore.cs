@@ -1,39 +1,36 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class VRScore : MonoBehaviour
 {
     public int maxScore = 100;
     private int currentScore;
 
-    public Key illamåendeKey = Key.B;
+    [Header("Input")]
+    public InputActionReference vrLegsPressAction; // ← Dra in din InputAction här i Inspector
+
+    private void OnEnable()
+    {
+        if (vrLegsPressAction != null)
+            vrLegsPressAction.action.Enable(); // Aktivera action om den inte redan är aktiverad
+            vrLegsPressAction.action.performed += OnLegsPress;
+    }
+
+    private void OnDisable()
+    {
+        if (vrLegsPressAction != null)
+            vrLegsPressAction.action.performed -= OnLegsPress;
+    }
 
     void Start()
     {
         currentScore = maxScore;
-        if (resultPanel != null)
-            resultPanel.SetActive(false); // Dölj resultatpanelen från start
     }
 
-    void Update()
+    private void OnLegsPress(InputAction.CallbackContext context)
     {
-        if (Keyboard.current[illamåendeKey].wasPressedThisFrame)
-        {
-            // Om knappen trycks ner, minska poängen
-            Debug.Log("Illamående key pressed. Current score: " + currentScore);
-
-            currentScore = Mathf.Max(0, currentScore - 1);
-        }
-    }
-
-    public void ShowFinalScore()
-    {
-        if (resultPanel != null)
-            resultPanel.SetActive(true);
-
-        if (finalScoreText != null)
-            finalScoreText.text = "Final VR Legs Score: " + currentScore;
+        currentScore = Mathf.Max(0, currentScore - 1);
+        Debug.Log("B-knapp (VRLegsPress) tryckt. Nuvarande poäng: " + currentScore);
     }
 
     public int GetFinalScore()
