@@ -200,11 +200,13 @@ public class PCSManager : MonoBehaviour
     }
     private IEnumerator ResetGame()
     {
+        isEnding = true;
         Debug.Log("Game should be reset - PanicButton was pressed");
         // Example termination actions (choose one):
         // 1. Reload current scene
         ShowFinalResult();
-        StopCoroutine(runningCheck);
+        if (isEnding == true)
+            StopCoroutine(runningCheck);
         StopCoroutine(pcsLoopCoroutine);
         yield return new WaitForSeconds(resetDelay);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
