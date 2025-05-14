@@ -275,9 +275,10 @@ MonoBehaviour:
   cueDuration: 3
   baseInterval: 10
   surpriseOffset: 3
-  totalChecks: 1
+  totalChecks: 13
   spamThreshold: 3
   participationButton: {fileID: 2570418559984924981, guid: 9222422a9a04ce74db34a6f3e28a8359, type: 3}
+  PanicButton: {fileID: 8094972720237943353, guid: 9222422a9a04ce74db34a6f3e28a8359, type: 3}
   checkPromptText: 'Press: --- (A) --- for Points'
   scoreMessageFormat: 'Score: {0} / {1}'
 --- !u!1 &31528380
@@ -11706,6 +11707,7 @@ MonoBehaviour:
   totalChecks: 6
   spamThreshold: 3
   participationButton: {fileID: 2570418559984924981, guid: 9222422a9a04ce74db34a6f3e28a8359, type: 3}
+  PanicButton: {fileID: 0}
   checkPromptText: 'Press: --- (A) --- for Points'
   scoreMessageFormat: 'Score: {0} / {1}'
 --- !u!4 &1375358050
@@ -12628,7 +12630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8070499686316302217, guid: dfe16fc58b06279499a950bf03db77b6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

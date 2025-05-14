@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 
@@ -21,12 +22,14 @@ public class PCSManager : MonoBehaviour
 
     [Header("Check Settings")]
     public int totalChecks = 10;
+    public float resetDelay = 5f;
 
     [Header("Anti-Spam Settings")]
     public int spamThreshold = 3;
 
     [Header("Input")]
     public InputActionReference participationButton;
+    public InputActionReference PanicButton;
 
     [Header("Prompt Texts")]
     [TextArea]
@@ -35,6 +38,8 @@ public class PCSManager : MonoBehaviour
     [TextArea]
     public string scoreMessageFormat = "Score: {0} / {1}";
 
+    private bool isEnding = false;
+    private Coroutine runningCheck;
     private bool cueActive = false;
     private bool inputReceived = false;
     private int successCount = 0;
@@ -50,7 +55,6 @@ public class PCSManager : MonoBehaviour
     private Coroutine pcsLoopCoroutine;
     private bool gameStarted = false;
 
-
     void Start()
     {
         cueText = visualCue.GetComponentInChildren<TextMeshProUGUI>();
@@ -59,14 +63,15 @@ public class PCSManager : MonoBehaviour
         visualCue.SetActive(false);
 
         participationButton.action.Enable(); // Ensure participation button is enabled from the start
-
         participationButton.action.performed += HandleButtonPress;
+        
+        PanicButton.action.Enable(); // Enable Panic button
+        PanicButton.action.performed += OnResetInput;
     }
 
     private void StartGame()
     {
         if (gameStarted) return; // Prevent starting the game loop again
-
         gameStarted = true;
         Debug.Log("PCSManager: Game started. Beginning PCS Loop. STARTGAME");
         pcsLoopCoroutine = StartCoroutine(PCSLoop());
@@ -81,8 +86,7 @@ public class PCSManager : MonoBehaviour
             float waitTime = baseInterval + Random.Range(-surpriseOffset, surpriseOffset);
             float compensationTime = -surpriseOffset;
             yield return new WaitForSeconds(waitTime);
-
-            yield return StartCoroutine(RunParticipationCheck());
+            runningCheck = StartCoroutine(RunParticipationCheck());
         }
 
         yield return new WaitForSeconds((5f + compensationTime));
@@ -151,7 +155,6 @@ public class PCSManager : MonoBehaviour
                 Debug.Log("Ignored input: This check is failed due to spamming.");
             }
         }
-        
     }
 
     private IEnumerator DisableVisualAfterDelay(float delay)
@@ -174,11 +177,13 @@ public class PCSManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (participationButton != null && participationButton.action != null)
-        {
+        if (participationButton?.action != null)
             participationButton.action.performed -= HandleButtonPress;
-        }
+
+        if (PanicButton?.action != null)
+            PanicButton.action.performed -= OnResetInput;
     }
+
 
     public void StartGameFromManager()
     {
@@ -187,5 +192,30 @@ public class PCSManager : MonoBehaviour
         gameStarted = true;
         Debug.Log("PCSManager: Game started externally. Beginning PCS Loop.");
         pcsLoopCoroutine = StartCoroutine(PCSLoop());
+    }
+
+    private void OnResetInput(InputAction.CallbackContext context) //Terminates game
+    {
+        StartCoroutine(ResetGame());
+    }
+    private IEnumerator ResetGame()
+    {
+        Debug.Log("Game should be reset - PanicButton was pressed");
+        // Example termination actions (choose one):
+        // 1. Reload current scene
+        ShowFinalResult();
+        StopCoroutine(runningCheck);
+        StopCoroutine(pcsLoopCoroutine);
+        yield return new WaitForSeconds(resetDelay);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
+        // 2. Or go to game over screen
+        // SceneManager.LoadScene("GameOverScene");
+        
+        // 3. Or quit application (for build)
+        // Application.Quit();
+        
+        // 4. Or simply stop movement
+        // enabled = false;
     }
 }
