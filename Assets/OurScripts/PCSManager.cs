@@ -109,9 +109,6 @@ public class PCSManager : MonoBehaviour
         {
             successCount++;
             Debug.Log("✅ PCS: Player participated.");
-
-            if (successAudio != null)
-                successAudio.Play(); // 🔊 Spela ljud vid framgång
         }
         else
         {
@@ -146,6 +143,8 @@ public class PCSManager : MonoBehaviour
                 cueText.color = Color.green;
                 Debug.Log("Button press detected DURING cue.");
                 StartCoroutine(DisableVisualAfterDelay(0.2f));
+                if (successAudio != null)
+                successAudio.Play(); // 🔊 Spela ljud vid framgång
             }
             else
             {
