@@ -6,7 +6,7 @@
             "id": "b06e9222-b548-4c32-8237-0ce4c33881a5",
             "actions": [
                 {
-                    "name": "PCSPress",
+                    "name": "VRLegsPressA",
                     "type": "Button",
                     "id": "7fcdb494-f739-464e-822b-7e8e4913731a",
                     "expectedControlType": "",
@@ -23,7 +23,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PCSPress",
+                    "action": "VRLegsPressA",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -34,7 +34,7 @@
             "id": "1778a3d4-b087-45ae-9f50-8634b4450cb0",
             "actions": [
                 {
-                    "name": "VRLegsPress",
+                    "name": "VRLegsPressB",
                     "type": "Button",
                     "id": "6cc1c007-3291-44fa-9765-0c52db6635c2",
                     "expectedControlType": "",
@@ -51,7 +51,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "VRLegsPress",
+                    "action": "VRLegsPressB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
