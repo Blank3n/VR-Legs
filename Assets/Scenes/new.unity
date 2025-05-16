@@ -296,6 +296,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1326074479}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &48456078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 48456079}
+  m_Layer: 0
+  m_Name: waypoint (86)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &48456079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48456078}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1560829256}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &60455919
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +549,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &101054820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 101054821}
+  m_Layer: 0
+  m_Name: path (3) (accelerations)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &101054821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101054820}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 120, y: 0, z: 60}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 510778625}
+  m_Father: {fileID: 792157577}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &104866041
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,295 +645,88 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathingScript: {fileID: 105590739}
   waypoints:
-  - {fileID: 1713781642}
-  - {fileID: 1326074479}
+  - {fileID: 510778625}
+  - {fileID: 48456079}
+  - {fileID: 693097661}
   pathSegments:
   - segment: {fileID: 0}
     useAcceleration: 1
-    startSpeed: 8
-    targetSpeed: 8
-    accelerationDuration: 0
-    rotationSpeed: 0
-    speed: 0
-    enableTilt: 0
-    tiltStrength: 0
-    tiltSpeed: 0
-    enableWobble: 0
-    wobbleStrength: 0
-    wobbleSpeed: 0
-    enableTwist: 0
-    twistStrength: 0
-    twistDuration: 0
-    twistInterval: 0
-    enableSwing: 0
-    length: 1
-    gravity: 9.82
-    maxPushForce: 1
-    enableSpin: 0
-    rotSpeed: 1
-    adjustLight: 1
-    targetLight: {fileID: 1527849184}
-    lightIntensity: 1
-  - segment: {fileID: 0}
-    useAcceleration: 1
-    startSpeed: 8
-    targetSpeed: 8
-    accelerationDuration: 0
-    rotationSpeed: 0
-    speed: 0
-    enableTilt: 0
-    tiltStrength: 10
-    tiltSpeed: 4
-    enableWobble: 0
-    wobbleStrength: 12
-    wobbleSpeed: 7
-    enableTwist: 1
-    twistStrength: 105
-    twistDuration: 2
-    twistInterval: 0.5
-    enableSwing: 0
-    length: 1
-    gravity: 1
-    maxPushForce: 1
-    enableSpin: 0
-    rotSpeed: 1
-    adjustLight: 1
-    targetLight: {fileID: 1527849184}
-    lightIntensity: 0.5
-  - segment: {fileID: 0}
-    useAcceleration: 1
-    startSpeed: 8
-    targetSpeed: 8
-    accelerationDuration: 0
-    rotationSpeed: 0
-    speed: 0
-    enableTilt: 1
-    tiltStrength: 12
-    tiltSpeed: 5
-    enableWobble: 0
-    wobbleStrength: 12
-    wobbleSpeed: 5
-    enableTwist: 0
-    twistStrength: 0
-    twistDuration: 0
-    twistInterval: 0
-    enableSwing: 0
-    length: 0
-    gravity: 0
-    maxPushForce: 0
-    enableSpin: 0
-    rotSpeed: 1
-    adjustLight: 1
-    targetLight: {fileID: 1527849184}
-    lightIntensity: 0.5
-  - segment: {fileID: 0}
-    useAcceleration: 1
-    startSpeed: 8
-    targetSpeed: 8
-    accelerationDuration: 0
-    rotationSpeed: 0
-    speed: 0
-    enableTilt: 0
-    tiltStrength: 0
-    tiltSpeed: 0
-    enableWobble: 1
-    wobbleStrength: 12
-    wobbleSpeed: 4
-    enableTwist: 0
-    twistStrength: 105
-    twistDuration: 2
-    twistInterval: 0.5
-    enableSwing: 0
-    length: 1
-    gravity: 1
-    maxPushForce: 1
-    enableSpin: 0
-    rotSpeed: 3
-    adjustLight: 1
-    targetLight: {fileID: 1527849184}
-    lightIntensity: 0.3
-  - segment: {fileID: 0}
-    useAcceleration: 1
-    startSpeed: 8
-    targetSpeed: 15
-    accelerationDuration: 0.5
-    rotationSpeed: 0
-    speed: 15
-    enableTilt: 0
-    tiltStrength: 12
-    tiltSpeed: 4
-    enableWobble: 0
-    wobbleStrength: 12
-    wobbleSpeed: 3
-    enableTwist: 0
-    twistStrength: 0
-    twistDuration: 0
-    twistInterval: 0
-    enableSwing: 1
-    length: 4
-    gravity: 9.81
-    maxPushForce: 1.7
-    enableSpin: 0
-    rotSpeed: 1
-    adjustLight: 1
-    targetLight: {fileID: 1527849184}
-    lightIntensity: 1
-  - segment: {fileID: 0}
-    useAcceleration: 1
-    startSpeed: 15
-    targetSpeed: 7
-    accelerationDuration: 0.1
-    rotationSpeed: 0
-    speed: 7
-    enableTilt: 1
-    tiltStrength: 12
-    tiltSpeed: 5
-    enableWobble: 1
-    wobbleStrength: 12
-    wobbleSpeed: 4
-    enableTwist: 0
-    twistStrength: 105
-    twistDuration: 0.3
-    twistInterval: 0.5
-    enableSwing: 0
-    length: 4
-    gravity: 9.81
-    maxPushForce: 1
-    enableSpin: 0
-    rotSpeed: 2
-    adjustLight: 1
-    targetLight: {fileID: 1527849184}
-    lightIntensity: 0.3
-  - segment: {fileID: 0}
-    useAcceleration: 1
-    startSpeed: 7
-    targetSpeed: 20
-    accelerationDuration: 1.5
-    rotationSpeed: 0
-    speed: 20
-    enableTilt: 1
-    tiltStrength: 12
-    tiltSpeed: 5
-    enableWobble: 1
-    wobbleStrength: 12
-    wobbleSpeed: 4
-    enableTwist: 0
-    twistStrength: 90
-    twistDuration: 2
-    twistInterval: 0.5
-    enableSwing: 0
-    length: 1
-    gravity: 1
-    maxPushForce: 1
-    enableSpin: 0
-    rotSpeed: 2
-    adjustLight: 1
-    targetLight: {fileID: 1527849184}
-    lightIntensity: 0.3
-  - segment: {fileID: 0}
-    useAcceleration: 1
-    startSpeed: 20
-    targetSpeed: 7
-    accelerationDuration: 1.5
-    rotationSpeed: 0
-    speed: 7
-    enableTilt: 1
-    tiltStrength: 12
-    tiltSpeed: 5
-    enableWobble: 1
-    wobbleStrength: 12
-    wobbleSpeed: 4
-    enableTwist: 0
-    twistStrength: 90
-    twistDuration: 2
-    twistInterval: 0.5
-    enableSwing: 1
-    length: 4
-    gravity: 9.81
-    maxPushForce: 2
-    enableSpin: 0
-    rotSpeed: 2
-    adjustLight: 1
-    targetLight: {fileID: 1527849184}
-    lightIntensity: 1
-  - segment: {fileID: 0}
-    useAcceleration: 1
-    startSpeed: 7
-    targetSpeed: 15
-    accelerationDuration: 0.1
-    rotationSpeed: 0
-    speed: 15
-    enableTilt: 1
-    tiltStrength: 15
-    tiltSpeed: 5
-    enableWobble: 1
-    wobbleStrength: 15
-    wobbleSpeed: 4
-    enableTwist: 0
-    twistStrength: 90
-    twistDuration: 0
-    twistInterval: 0
-    enableSwing: 1
-    length: 1
-    gravity: 1
-    maxPushForce: 1
-    enableSpin: 0
-    rotSpeed: 2
-    adjustLight: 1
-    targetLight: {fileID: 1527849184}
-    lightIntensity: 0.5
-  - segment: {fileID: 0}
-    useAcceleration: 1
-    startSpeed: 15
+    startSpeed: 2
     targetSpeed: 10
-    accelerationDuration: 0.1
+    accelerationDuration: 0
     rotationSpeed: 0
-    speed: 10
-    enableTilt: 1
-    tiltStrength: 15
-    tiltSpeed: 4
-    enableWobble: 1
-    wobbleStrength: 15
-    wobbleSpeed: 3
-    enableTwist: 0
-    twistStrength: 90
-    twistDuration: 2
-    twistInterval: 0.5
-    enableSwing: 1
-    length: 8
-    gravity: 9.81
-    maxPushForce: 1.5
-    enableSpin: 0
-    rotSpeed: 7
-    adjustLight: 1
-    targetLight: {fileID: 1527849184}
-    lightIntensity: 0.1
-  - segment: {fileID: 0}
-    useAcceleration: 1
-    startSpeed: 5
-    targetSpeed: 50
-    accelerationDuration: 0.5
-    rotationSpeed: 0
-    speed: 20
+    speed: 0
     enableTilt: 0
     tiltStrength: 10
-    tiltSpeed: 5
+    tiltSpeed: 4
     enableWobble: 0
     wobbleStrength: 12
     wobbleSpeed: 7
     enableTwist: 0
-    twistStrength: 0
-    twistDuration: 0
-    twistInterval: 0
-    enableSwing: 1
-    length: 6
-    gravity: 5
-    maxPushForce: 5
-    enableSpin: 1
-    rotSpeed: 10
+    twistStrength: 105
+    twistDuration: 2
+    twistInterval: 0.5
+    enableSwing: 0
+    length: 1
+    gravity: 1
+    maxPushForce: 1
+    enableSpin: 0
+    rotSpeed: 1
     adjustLight: 1
     targetLight: {fileID: 1527849184}
-    lightIntensity: 0.1
+    lightIntensity: 0.5
+  - segment: {fileID: 1560829256}
+    useAcceleration: 1
+    startSpeed: 10
+    targetSpeed: 2
+    accelerationDuration: 0
+    rotationSpeed: 0
+    speed: 0
+    enableTilt: 0
+    tiltStrength: 10
+    tiltSpeed: 4
+    enableWobble: 0
+    wobbleStrength: 12
+    wobbleSpeed: 7
+    enableTwist: 0
+    twistStrength: 105
+    twistDuration: 2
+    twistInterval: 0.5
+    enableSwing: 0
+    length: 1
+    gravity: 1
+    maxPushForce: 1
+    enableSpin: 0
+    rotSpeed: 1
+    adjustLight: 1
+    targetLight: {fileID: 1527849184}
+    lightIntensity: 0.5
+  - segment: {fileID: 843790863}
+    useAcceleration: 1
+    startSpeed: 10
+    targetSpeed: 2
+    accelerationDuration: 0
+    rotationSpeed: 0
+    speed: 0
+    enableTilt: 0
+    tiltStrength: 10
+    tiltSpeed: 4
+    enableWobble: 0
+    wobbleStrength: 12
+    wobbleSpeed: 7
+    enableTwist: 0
+    twistStrength: 105
+    twistDuration: 2
+    twistInterval: 0.5
+    enableSwing: 0
+    length: 1
+    gravity: 1
+    maxPushForce: 1
+    enableSpin: 0
+    rotSpeed: 1
+    adjustLight: 1
+    targetLight: {fileID: 1527849184}
+    lightIntensity: 0.5
   tiltScript: {fileID: 2042901874}
   wobbleScript: {fileID: 362354470}
   twistScript: {fileID: 616119645}
@@ -893,6 +749,9 @@ MonoBehaviour:
   - {fileID: 1713781642}
   - {fileID: 1326074479}
   - {fileID: 1342907953}
+  - {fileID: 101054821}
+  - {fileID: 1560829256}
+  - {fileID: 843790863}
   currentSpeed: 5
   currentRotationSpeed: 2
   loop: 1
@@ -910,14 +769,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 105590737}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: -0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2042901873}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 629.479, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &105590741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1078,6 +937,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1326074479}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &157358690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 157358691}
+  m_Layer: 0
+  m_Name: waypoint (85)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &157358691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157358690}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 60, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1342907953}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &163451463
 GameObject:
@@ -2264,6 +2154,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1326074479}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &510778624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 510778625}
+  m_Layer: 0
+  m_Name: waypoint (86)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &510778625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510778624}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 101054821}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &517484844
 GameObject:
   m_ObjectHideFlags: 0
@@ -3103,6 +3024,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1326074479}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &693097660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 693097661}
+  m_Layer: 0
+  m_Name: waypoint (86)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &693097661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693097660}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 843790863}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &714796402
 GameObject:
   m_ObjectHideFlags: 0
@@ -3890,6 +3842,9 @@ Transform:
   - {fileID: 1713781642}
   - {fileID: 1326074479}
   - {fileID: 1342907953}
+  - {fileID: 101054821}
+  - {fileID: 1560829256}
+  - {fileID: 843790863}
   m_Father: {fileID: 1158612678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &794386028
@@ -4061,6 +4016,38 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2034607393}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &843790862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 843790863}
+  m_Layer: 0
+  m_Name: path (3) (accelerations) (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &843790863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843790862}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 120, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 693097661}
+  m_Father: {fileID: 792157577}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &850361671
 GameObject:
@@ -9226,6 +9213,7 @@ Transform:
   - {fileID: 85027603}
   - {fileID: 1071119378}
   - {fileID: 1826152931}
+  - {fileID: 157358691}
   m_Father: {fileID: 792157577}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1345051414
@@ -10415,6 +10403,38 @@ MonoBehaviour:
     m_InputActionReference: {fileID: 0}
     m_ObjectReferenceObject: {fileID: 0}
     m_ManualValue: 0
+--- !u!1 &1560829255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1560829256}
+  m_Layer: 0
+  m_Name: path (3) (accelerations) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1560829256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560829255}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 120, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 48456079}
+  m_Father: {fileID: 792157577}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1576882354
 GameObject:
   m_ObjectHideFlags: 0

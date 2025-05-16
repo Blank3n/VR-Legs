@@ -6,7 +6,7 @@ public class SetStartPos : MonoBehaviour
     void Start()
     {
         transform.position = new Vector3(0f, 0f, 0f);
-        transform.rotation = Quaternion.Euler(0f, 270f, 0f);
+        transform.rotation = Quaternion.Euler(0f, 90f, 0f);
     }
 
     // Update is called once per frame
