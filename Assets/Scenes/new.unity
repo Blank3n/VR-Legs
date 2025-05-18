@@ -773,7 +773,7 @@ MonoBehaviour:
   - {fileID: 510778625}
   - {fileID: 2059569794}
   - {fileID: 895092939}
-  - {fileID: 0}
+  - {fileID: 510778625}
   - {fileID: 2059569794}
   pathSegments:
   - segment: {fileID: 1713781642}
@@ -854,8 +854,8 @@ MonoBehaviour:
     adjustLight: 1
     targetLight: {fileID: 1527849184}
     lightIntensity: 0.5
-  - segment: {fileID: 101054821}
-    useAcceleration: 1
+  - segment: {fileID: 1086189291}
+    useAcceleration: 0
     startSpeed: 40
     targetSpeed: 10
     accelerationDuration: 1
@@ -864,7 +864,7 @@ MonoBehaviour:
     enableTilt: 0
     tiltStrength: 10
     tiltSpeed: 4
-    enableWobble: 0
+    enableWobble: 1
     wobbleStrength: 12
     wobbleSpeed: 7
     enableTwist: 0
@@ -1009,7 +1009,10 @@ MonoBehaviour:
   - {fileID: 101054821}
   - {fileID: 1086189291}
   - {fileID: 2128793861}
-  - {fileID: 0}
+  - {fileID: 1553251141}
+  - {fileID: 97964751}
+  - {fileID: 874558850}
+  - {fileID: 355701452}
   currentSpeed: 5
   currentRotationSpeed: 2
   loop: 0
