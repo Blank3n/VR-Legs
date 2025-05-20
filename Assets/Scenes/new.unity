@@ -273,15 +273,46 @@ MonoBehaviour:
   failAudio: {fileID: 2024590283}
   visualCue: {fileID: 280670227}
   cueDuration: 3
-  baseInterval: 10
+  baseInterval: 12
   surpriseOffset: 3
-  totalChecks: 13
+  totalChecks: 11
   resetDelay: 5
   spamThreshold: 3
   participationButton: {fileID: 2570418559984924981, guid: 9222422a9a04ce74db34a6f3e28a8359, type: 3}
   PanicButton: {fileID: 8094972720237943353, guid: 9222422a9a04ce74db34a6f3e28a8359, type: 3}
   checkPromptText: 'Press: --- (A) --- for Points'
   scoreMessageFormat: 'Score: {0} / {1}'
+--- !u!1 &22144981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 22144982}
+  m_Layer: 0
+  m_Name: waypoint (25)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &22144982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22144981}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.12, y: 0.21, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1599898643}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &31528380
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,37 +899,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathingScript: {fileID: 105590739}
   waypoints:
-  - {fileID: 1610433484}
-  - {fileID: 1133421377}
-  - {fileID: 1246430017}
-  - {fileID: 316876650}
-  - {fileID: 462483454}
-  - {fileID: 31528381}
-  - {fileID: 1375817252}
-  - {fileID: 154143064}
-  - {fileID: 501277053}
-  - {fileID: 1197644334}
-  - {fileID: 285822063}
-  - {fileID: 1597603753}
-  - {fileID: 2122619799}
-  - {fileID: 1538371980}
-  - {fileID: 92892920}
-  - {fileID: 551563146}
-  - {fileID: 1989833035}
-  - {fileID: 841845093}
-  - {fileID: 994300396}
-  - {fileID: 248188157}
-  - {fileID: 563920359}
-  - {fileID: 660983888}
-  - {fileID: 837847488}
-  - {fileID: 882077029}
-  - {fileID: 1854742084}
-  - {fileID: 140762115}
+  - {fileID: 1152048457}
+  - {fileID: 969848377}
+  - {fileID: 1947607308}
+  - {fileID: 188524166}
+  - {fileID: 1111828379}
+  - {fileID: 718760813}
+  - {fileID: 407481652}
+  - {fileID: 1354912812}
+  - {fileID: 1943405585}
+  - {fileID: 1762028072}
+  - {fileID: 1077412898}
+  - {fileID: 1554660669}
+  - {fileID: 487960497}
   pathSegments:
   - segment: {fileID: 135908500}
     useAcceleration: 1
-    startSpeed: 8
-    targetSpeed: 8
+    startSpeed: 5
+    targetSpeed: 5
     accelerationDuration: 0
     rotationSpeed: 0
     speed: 0
@@ -923,8 +941,8 @@ MonoBehaviour:
     lightIntensity: 1
   - segment: {fileID: 346319925}
     useAcceleration: 1
-    startSpeed: 8
-    targetSpeed: 8
+    startSpeed: 5
+    targetSpeed: 5
     accelerationDuration: 0
     rotationSpeed: 0
     speed: 0
@@ -949,17 +967,17 @@ MonoBehaviour:
     lightIntensity: 0.5
   - segment: {fileID: 609181754}
     useAcceleration: 1
-    startSpeed: 8
-    targetSpeed: 8
+    startSpeed: 5
+    targetSpeed: 5
     accelerationDuration: 0
     rotationSpeed: 0
     speed: 0
-    enableTilt: 1
+    enableTilt: 0
     tiltStrength: 12
     tiltSpeed: 5
-    enableWobble: 0
-    wobbleStrength: 12
-    wobbleSpeed: 5
+    enableWobble: 1
+    wobbleStrength: 14
+    wobbleSpeed: 4
     enableTwist: 0
     twistStrength: 0
     twistDuration: 0
@@ -975,15 +993,15 @@ MonoBehaviour:
     lightIntensity: 0.5
   - segment: {fileID: 124645828}
     useAcceleration: 1
-    startSpeed: 8
-    targetSpeed: 8
+    startSpeed: 5
+    targetSpeed: 5
     accelerationDuration: 0
     rotationSpeed: 0
     speed: 0
-    enableTilt: 0
-    tiltStrength: 0
-    tiltSpeed: 0
-    enableWobble: 1
+    enableTilt: 1
+    tiltStrength: 12
+    tiltSpeed: 5
+    enableWobble: 0
     wobbleStrength: 12
     wobbleSpeed: 4
     enableTwist: 0
@@ -1001,11 +1019,11 @@ MonoBehaviour:
     lightIntensity: 0.3
   - segment: {fileID: 591292135}
     useAcceleration: 1
-    startSpeed: 8
-    targetSpeed: 15
-    accelerationDuration: 0.5
+    startSpeed: 5
+    targetSpeed: 5
+    accelerationDuration: 0
     rotationSpeed: 0
-    speed: 15
+    speed: 0
     enableTilt: 0
     tiltStrength: 12
     tiltSpeed: 4
@@ -1027,16 +1045,16 @@ MonoBehaviour:
     lightIntensity: 1
   - segment: {fileID: 1432654081}
     useAcceleration: 1
-    startSpeed: 15
-    targetSpeed: 7
-    accelerationDuration: 0.1
+    startSpeed: 5
+    targetSpeed: 5
+    accelerationDuration: 0
     rotationSpeed: 0
-    speed: 7
+    speed: 0
     enableTilt: 1
     tiltStrength: 12
     tiltSpeed: 5
     enableWobble: 1
-    wobbleStrength: 12
+    wobbleStrength: 14
     wobbleSpeed: 4
     enableTwist: 0
     twistStrength: 105
@@ -1053,25 +1071,25 @@ MonoBehaviour:
     lightIntensity: 0.3
   - segment: {fileID: 703482843}
     useAcceleration: 1
-    startSpeed: 7
-    targetSpeed: 20
-    accelerationDuration: 1.5
+    startSpeed: 5
+    targetSpeed: 5
+    accelerationDuration: 0
     rotationSpeed: 0
-    speed: 20
-    enableTilt: 1
+    speed: 0
+    enableTilt: 0
     tiltStrength: 12
     tiltSpeed: 5
     enableWobble: 1
-    wobbleStrength: 12
+    wobbleStrength: 14
     wobbleSpeed: 4
     enableTwist: 0
     twistStrength: 90
     twistDuration: 2
     twistInterval: 0.5
-    enableSwing: 0
-    length: 1
-    gravity: 1
-    maxPushForce: 1
+    enableSwing: 1
+    length: 4
+    gravity: 9.81
+    maxPushForce: 1.7
     enableSpin: 0
     rotSpeed: 2
     adjustLight: 1
@@ -1079,15 +1097,15 @@ MonoBehaviour:
     lightIntensity: 0.3
   - segment: {fileID: 606394648}
     useAcceleration: 1
-    startSpeed: 20
-    targetSpeed: 7
-    accelerationDuration: 1.5
+    startSpeed: 5
+    targetSpeed: 5
+    accelerationDuration: 0
     rotationSpeed: 0
-    speed: 7
+    speed: 0
     enableTilt: 1
     tiltStrength: 12
     tiltSpeed: 5
-    enableWobble: 1
+    enableWobble: 0
     wobbleStrength: 12
     wobbleSpeed: 4
     enableTwist: 0
@@ -1097,7 +1115,7 @@ MonoBehaviour:
     enableSwing: 1
     length: 4
     gravity: 9.81
-    maxPushForce: 2
+    maxPushForce: 1.7
     enableSpin: 0
     rotSpeed: 2
     adjustLight: 1
@@ -1105,25 +1123,25 @@ MonoBehaviour:
     lightIntensity: 1
   - segment: {fileID: 2002797726}
     useAcceleration: 1
-    startSpeed: 7
+    startSpeed: 5
     targetSpeed: 15
-    accelerationDuration: 0.1
+    accelerationDuration: 5
     rotationSpeed: 0
-    speed: 15
+    speed: 0
     enableTilt: 1
-    tiltStrength: 15
+    tiltStrength: 12
     tiltSpeed: 5
     enableWobble: 1
-    wobbleStrength: 15
+    wobbleStrength: 14
     wobbleSpeed: 4
     enableTwist: 0
     twistStrength: 90
     twistDuration: 0
     twistInterval: 0
     enableSwing: 1
-    length: 1
-    gravity: 1
-    maxPushForce: 1
+    length: 4
+    gravity: 9.81
+    maxPushForce: 1.7
     enableSpin: 0
     rotSpeed: 2
     adjustLight: 1
@@ -1131,11 +1149,11 @@ MonoBehaviour:
     lightIntensity: 0.5
   - segment: {fileID: 1534857887}
     useAcceleration: 1
-    startSpeed: 15
-    targetSpeed: 10
-    accelerationDuration: 0.1
+    startSpeed: 5
+    targetSpeed: 25
+    accelerationDuration: 12.5
     rotationSpeed: 0
-    speed: 10
+    speed: 0
     enableTilt: 1
     tiltStrength: 15
     tiltSpeed: 4
@@ -1157,26 +1175,26 @@ MonoBehaviour:
     lightIntensity: 0.1
   - segment: {fileID: 1889531322}
     useAcceleration: 1
-    startSpeed: 5
-    targetSpeed: 50
+    startSpeed: 25
+    targetSpeed: 5
     accelerationDuration: 0.5
     rotationSpeed: 0
-    speed: 20
-    enableTilt: 0
+    speed: 0
+    enableTilt: 1
     tiltStrength: 10
-    tiltSpeed: 5
-    enableWobble: 0
+    tiltSpeed: 4
+    enableWobble: 1
     wobbleStrength: 12
-    wobbleSpeed: 7
+    wobbleSpeed: 3
     enableTwist: 0
     twistStrength: 0
     twistDuration: 0
     twistInterval: 0
     enableSwing: 1
-    length: 6
-    gravity: 5
-    maxPushForce: 5
-    enableSpin: 1
+    length: 8
+    gravity: 9.81
+    maxPushForce: 1.5
+    enableSpin: 0
     rotSpeed: 10
     adjustLight: 1
     targetLight: {fileID: 1527849184}
@@ -1184,10 +1202,36 @@ MonoBehaviour:
   - segment: {fileID: 2075917804}
     useAcceleration: 1
     startSpeed: 5
-    targetSpeed: 50
-    accelerationDuration: 0.5
+    targetSpeed: 5
+    accelerationDuration: 0
     rotationSpeed: 0
-    speed: 20
+    speed: 0
+    enableTilt: 1
+    tiltStrength: 30
+    tiltSpeed: 2
+    enableWobble: 1
+    wobbleStrength: 30
+    wobbleSpeed: 1.2
+    enableTwist: 0
+    twistStrength: 0
+    twistDuration: 0
+    twistInterval: 0
+    enableSwing: 1
+    length: 10
+    gravity: 0
+    maxPushForce: 1
+    enableSpin: 0
+    rotSpeed: 10
+    adjustLight: 1
+    targetLight: {fileID: 1527849184}
+    lightIntensity: 0.1
+  - segment: {fileID: 1599898643}
+    useAcceleration: 1
+    startSpeed: 5
+    targetSpeed: 1
+    accelerationDuration: 1
+    rotationSpeed: 0
+    speed: 0
     enableTilt: 0
     tiltStrength: 10
     tiltSpeed: 5
@@ -1198,11 +1242,11 @@ MonoBehaviour:
     twistStrength: 0
     twistDuration: 0
     twistInterval: 0
-    enableSwing: 1
+    enableSwing: 0
     length: 6
     gravity: 5
     maxPushForce: 5
-    enableSpin: 1
+    enableSpin: 0
     rotSpeed: 10
     adjustLight: 1
     targetLight: {fileID: 1527849184}
@@ -1238,15 +1282,12 @@ MonoBehaviour:
   - {fileID: 1534857887}
   - {fileID: 1889531322}
   - {fileID: 2075917804}
+  - {fileID: 1599898643}
   currentSpeed: 5
   currentRotationSpeed: 2
   loop: 0
-  waypointTriggers:
-  - triggerWaypoint: {fileID: 1589483065}
-    objectToActivate: {fileID: 1731478999}
-    triggered: 0
-  terminateWaypoints:
-  - {fileID: 2080528903}
+  waypointTriggers: []
+  terminateWaypoints: []
 --- !u!4 &105590740
 Transform:
   m_ObjectHideFlags: 0
@@ -1349,13 +1390,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117862513}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.22510722, z: -0, w: -0.974334}
-  m_LocalPosition: {x: -1475.62, y: 742.84467, z: 3023.0063}
+  m_LocalRotation: {x: -0, y: 0.27745825, z: -0, w: -0.9607377}
+  m_LocalPosition: {x: -1492, y: 742.84467, z: 2999}
   m_LocalScale: {x: 50, y: 30, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1048167943}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -32.217, z: 0}
 --- !u!212 &117862515
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2065,7 +2106,7 @@ Transform:
   m_GameObject: {fileID: 188524165}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.93, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3515,7 +3556,7 @@ Transform:
   m_GameObject: {fileID: 407481651}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -3.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3807,6 +3848,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1618350436}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &487960496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 487960497}
+  m_Layer: 0
+  m_Name: waypoint (24)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &487960497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487960496}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1599898643}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &491537344
 GameObject:
@@ -6648,7 +6720,7 @@ Transform:
   m_GameObject: {fileID: 718760812}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7922,7 +7994,7 @@ Transform:
   m_GameObject: {fileID: 914448641}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -120}
+  m_LocalPosition: {x: 0, y: 0, z: 104.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8863,7 +8935,7 @@ Transform:
   m_GameObject: {fileID: 969848376}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 6.62, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10416,6 +10488,42 @@ PrefabInstance:
     - target: {fileID: 2411363228349667420, guid: 37e35340f6e54c8499fa7bbf4846933d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411363228350088316, guid: 37e35340f6e54c8499fa7bbf4846933d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 108.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411363228350088316, guid: 37e35340f6e54c8499fa7bbf4846933d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411363228350088316, guid: 37e35340f6e54c8499fa7bbf4846933d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 45.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411363228350088316, guid: 37e35340f6e54c8499fa7bbf4846933d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70584625
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411363228350088316, guid: 37e35340f6e54c8499fa7bbf4846933d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.04220247
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411363228350088316, guid: 37e35340f6e54c8499fa7bbf4846933d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.70584637
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411363228350088316, guid: 37e35340f6e54c8499fa7bbf4846933d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.042202473
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411363228350088316, guid: 37e35340f6e54c8499fa7bbf4846933d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -6.843
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411363228350088316, guid: 37e35340f6e54c8499fa7bbf4846933d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 2426848136864282070, guid: 37e35340f6e54c8499fa7bbf4846933d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -12873,6 +12981,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 8935126060212745828, guid: 37e35340f6e54c8499fa7bbf4846933d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 174.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935126060212745828, guid: 37e35340f6e54c8499fa7bbf4846933d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.85
+      objectReference: {fileID: 0}
     - target: {fileID: 8935126060213168708, guid: 37e35340f6e54c8499fa7bbf4846933d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -13117,6 +13233,7 @@ Transform:
   - {fileID: 1534857887}
   - {fileID: 1889531322}
   - {fileID: 2075917804}
+  - {fileID: 1599898643}
   m_Father: {fileID: 1158612678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1065380603
@@ -13175,7 +13292,7 @@ Transform:
   m_GameObject: {fileID: 1077412897}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -20.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13269,7 +13386,7 @@ Transform:
   m_GameObject: {fileID: 1111828378}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -3.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13900,6 +14017,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 651744880}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1233374225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1233374226}
+  m_Layer: 0
+  m_Name: waypoint (26)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1233374226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233374225}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 17.38, y: 0.21, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1599898643}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1234483953
 GameObject:
   m_ObjectHideFlags: 0
@@ -14454,7 +14602,7 @@ Transform:
   m_GameObject: {fileID: 1354912811}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15504,7 +15652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8070499686316302217, guid: dfe16fc58b06279499a950bf03db77b6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15909,7 +16057,7 @@ Transform:
   m_GameObject: {fileID: 1554660668}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16378,6 +16526,40 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 310741880}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1599898642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1599898643}
+  m_Layer: 0
+  m_Name: path (12)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1599898643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599898642}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 224.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 487960497}
+  - {fileID: 22144982}
+  - {fileID: 1233374226}
+  m_Father: {fileID: 1064027241}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1610433483
 GameObject:
@@ -17111,7 +17293,7 @@ Transform:
   m_GameObject: {fileID: 1762028071}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.01, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18670,7 +18852,7 @@ Transform:
   m_GameObject: {fileID: 1934561108}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 120}
+  m_LocalPosition: {x: 0, y: 0, z: 120.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18763,7 +18945,7 @@ Transform:
   m_GameObject: {fileID: 1943405584}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 3.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18794,7 +18976,7 @@ Transform:
   m_GameObject: {fileID: 1947607307}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 4.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19575,13 +19757,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055924894}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.26817077, z: 0, w: -0.9633714}
-  m_LocalPosition: {x: 1824.3801, y: 741.71783, z: 3023.0066}
+  m_LocalRotation: {x: -0, y: -0.26001412, z: -0, w: -0.96560484}
+  m_LocalPosition: {x: 1847, y: 741.71783, z: 3030}
   m_LocalScale: {x: 50, y: 30, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1048167943}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 30.142, z: 0}
 --- !u!212 &2055924896
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -112,6 +112,7 @@ public class ModularPathSkateboard : MonoBehaviour
         {
             if (terminatePoint == reachedWaypoint)
             {
+                
                 TerminateGame();
                 return; // Exit after finding first matching termination point
             }
