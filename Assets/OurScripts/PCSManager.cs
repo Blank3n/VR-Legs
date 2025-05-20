@@ -206,8 +206,10 @@ public class PCSManager : MonoBehaviour
         // 1. Reload current scene
         ShowFinalResult();
         if (isEnding == true)
-            StopCoroutine(runningCheck);
-        StopCoroutine(pcsLoopCoroutine);
+            if (runningCheck != null)
+                StopCoroutine(runningCheck);
+        if (pcsLoopCoroutine != null)
+            StopCoroutine(pcsLoopCoroutine);
         yield return new WaitForSeconds(resetDelay);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         
