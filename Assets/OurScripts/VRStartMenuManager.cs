@@ -60,6 +60,7 @@ public class VRStartMenuManager : MonoBehaviour
         {
             participationButtonAction.action.Enable(); // Re-enable participation button
         }
+        FindObjectOfType<TimerDisplay>()?.StartTimer(); // ⏱️ Starta timern
 
         // Hide the menu
         startMenuCanvas.SetActive(false);
