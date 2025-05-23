@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI; // For UI Text
+using TMPro; // Optional, if using TextMeshPro
 
 public class VRStartMenuManager : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class VRStartMenuManager : MonoBehaviour
     [Header("Input")]
     public InputActionReference startButtonAction;  // Reference to an Input Action (e.g. trigger or A)
     public InputActionReference participationButtonAction; // Reference to participation button (A)
+
+    public TextMeshProUGUI startMenuText; // Assign in inspector if using TextMeshPro
+    // public Text startMenuText; // Use this instead if using legacy UnityEngine.UI.Text
 
     private bool hasStarted = false;
 
@@ -33,8 +38,8 @@ public class VRStartMenuManager : MonoBehaviour
         {
             participationButtonAction.action.Enable(); // Ensure it's enabled from the start
         }
-        
-        FindObjectOfType<TimerDisplay>()?.StopTimer();
+
+        FindObjectOfType<TimerDisplay>()?.StopTimer(); // Makes sure timer doesn't run in the StartMenu
     }
 
     private void OnStartButtonPressed(InputAction.CallbackContext context)
@@ -44,27 +49,24 @@ public class VRStartMenuManager : MonoBehaviour
 
         Debug.Log("▶️ Start button pressed. Starting experience.");
 
-        // Enable gameplay/experience
         foreach (var script in experienceScripts)
         {
             script.enabled = true;
         }
 
-        // Call the StartGameFromManager method on PCSManager to begin the PCS check loop
         PCSManager pcsManager = FindObjectOfType<PCSManager>();
         if (pcsManager != null)
         {
-            pcsManager.StartGameFromManager(); // This will start PCSManager's check loop
+            pcsManager.StartGameFromManager();
         }
 
-        // Ensure participation button input action is enabled for the duration of the game
         if (participationButtonAction != null)
         {
-            participationButtonAction.action.Enable(); // Re-enable participation button
+            participationButtonAction.action.Enable();
         }
-        FindObjectOfType<TimerDisplay>()?.StartTimer(); // ⏱️ Starta timern
 
-        // Hide the menu
+        FindObjectOfType<TimerDisplay>()?.StartTimer(); // Start timer
+
         startMenuCanvas.SetActive(false);
         hasStarted = true;
     }
@@ -78,7 +80,7 @@ public class VRStartMenuManager : MonoBehaviour
 
         if (participationButtonAction != null && participationButtonAction.action != null)
         {
-            participationButtonAction.action.Disable(); // Disable if necessary when done
+            participationButtonAction.action.Disable();
         }
     }
 }

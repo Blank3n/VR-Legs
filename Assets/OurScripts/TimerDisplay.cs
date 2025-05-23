@@ -7,13 +7,29 @@ public class TimerDisplay : MonoBehaviour
     public bool isRunning = false;
 
     private float elapsedTime = 0f;
+    private static string previousTime; // persists across scene reloads
 
     void Update()
     {
-        if (!isRunning) return;
+        if (!isRunning)
+        {
+            // Show previous time only if it exists
+            if (!string.IsNullOrEmpty(previousTime))
+            {
+                timerText.text = "Previous Time: " + previousTime;
+            }
+            return;
+        }
 
+        // Timer is running
         elapsedTime += Time.deltaTime;
         timerText.text = "Time: " + elapsedTime.ToString("F1") + " s";
+    }
+
+    private void OnDestroy()
+    {
+        // Save the last elapsed time when the object is destroyed
+        previousTime = elapsedTime.ToString("F1") + " s";
     }
 
     public float GetElapsedTime()

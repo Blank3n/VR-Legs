@@ -22,10 +22,10 @@ public class PCSManager : MonoBehaviour
 
     [Header("Check Settings")]
     public int totalChecks = 10;
-    public float resetDelay = 5f;
-
-    [Header("Anti-Spam Settings")]
     public int spamThreshold = 3;
+
+    [Header("Reset Settings")]
+    public float resetDelay = 5f;
 
     [Header("Input")]
     public InputActionReference participationButton;
