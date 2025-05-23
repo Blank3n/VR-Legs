@@ -33,6 +33,8 @@ public class VRStartMenuManager : MonoBehaviour
         {
             participationButtonAction.action.Enable(); // Ensure it's enabled from the start
         }
+        
+        FindObjectOfType<TimerDisplay>()?.StopTimer();
     }
 
     private void OnStartButtonPressed(InputAction.CallbackContext context)
