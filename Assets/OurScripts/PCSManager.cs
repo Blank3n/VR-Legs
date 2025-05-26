@@ -3,18 +3,23 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using TMPro;
-
+using UnityEngine.UI;
 
 public class PCSManager : MonoBehaviour
 {
-
     [Header("Audio")]
     public AudioSource successAudio;
     public AudioSource failAudio;
 
     [Header("Visual & Timing")]
-    public GameObject visualCue;
+    public GameObject visualCue;  // Parent Canvas or Panel
     public float cueDuration = 3f;
+
+    [Header("Cue Image")]
+    public GameObject cuePanel;
+    public Image imageCue;           // The UI Image object to show
+    public Sprite cueSprite;         // The single image/sprite to display
+    public Vector2 cueSize = new Vector2(200, 200); // Size in pixels
 
     [Header("Check Frequency")]
     public float baseInterval = 20f;
@@ -47,49 +52,62 @@ public class PCSManager : MonoBehaviour
     private int spamCount = 0;
     private bool spammedThisCheck = false;
 
-    private float compensationTime = 0;
+    private Coroutine pcsLoopCoroutine;
+    private bool gameStarted = false;
 
     private TextMeshProUGUI cueText;
     private Color originalTextColor;
 
-    private Coroutine pcsLoopCoroutine;
-    private bool gameStarted = false;
+    private readonly Vector2[] screenCorners = new Vector2[4]
+    {
+        new Vector2(0, 1), // Top-left
+        new Vector2(1, 1), // Top-right
+        new Vector2(0, 0), // Bottom-left
+        new Vector2(1, 0)  // Bottom-right
+    };
 
     void Start()
     {
         cueText = visualCue.GetComponentInChildren<TextMeshProUGUI>();
-        originalTextColor = cueText.color;
+        if (cueText != null)
+        {
+            originalTextColor = cueText.color;
+            cueText.gameObject.SetActive(false);
+            cuePanel.SetActive(false);
+        }
 
         visualCue.SetActive(false);
 
-        participationButton.action.Enable(); // Ensure participation button is enabled from the start
+        if (imageCue != null)
+        {
+            imageCue.enabled = false;
+            imageCue.sprite = cueSprite;
+        }
+
+        participationButton.action.Enable();
         participationButton.action.performed += HandleButtonPress;
-        
-        PanicButton.action.Enable(); // Enable Panic button
+
+        PanicButton.action.Enable();
         PanicButton.action.performed += OnResetInput;
     }
 
     private void StartGame()
     {
-        if (gameStarted) return; // Prevent starting the game loop again
+        if (gameStarted) return;
         gameStarted = true;
-        Debug.Log("PCSManager: Game started. Beginning PCS Loop. STARTGAME");
         pcsLoopCoroutine = StartCoroutine(PCSLoop());
     }
 
     private IEnumerator PCSLoop()
     {
-        Debug.Log("PCSManager: Running PCS Loop.");
-
         while (checksCompleted < totalChecks)
         {
             float waitTime = baseInterval + Random.Range(-surpriseOffset, surpriseOffset);
-            float compensationTime = -surpriseOffset;
             yield return new WaitForSeconds(waitTime);
             runningCheck = StartCoroutine(RunParticipationCheck());
         }
 
-        yield return new WaitForSeconds((5f + compensationTime));
+        yield return new WaitForSeconds(5f);
         ShowFinalResult();
     }
 
@@ -101,9 +119,21 @@ public class PCSManager : MonoBehaviour
         cueActive = true;
         inputReceived = false;
 
-        cueText.text = checkPromptText;
-        cueText.color = originalTextColor;
         visualCue.SetActive(true);
+
+        // Show image cue at random position
+        if (imageCue != null && cueSprite != null)
+        {
+            imageCue.sprite = cueSprite;
+            imageCue.rectTransform.sizeDelta = cueSize;
+
+            Vector2 anchor = screenCorners[Random.Range(0, screenCorners.Length)];
+            imageCue.rectTransform.anchorMin = anchor;
+            imageCue.rectTransform.anchorMax = anchor;
+            imageCue.rectTransform.pivot = anchor;
+            imageCue.rectTransform.anchoredPosition = Vector2.zero;
+            imageCue.enabled = true;
+        }
 
         yield return new WaitForSeconds(cueDuration);
 
@@ -112,20 +142,12 @@ public class PCSManager : MonoBehaviour
         if (inputReceived && !spammedThisCheck)
         {
             successCount++;
-            Debug.Log("✅ PCS: Player participated.");
+            // Already handled in input
         }
         else
         {
-            if (spammedThisCheck)
-                Debug.Log("❌ PCS: Player failed due to spamming.");
-            else
-                Debug.Log("❌ PCS: Player did NOT participate.");
-                
-            if (failAudio != null)
-                failAudio.Play(); // 🔊 Spela ljud vid misslyckande
-
-            cueText.color = Color.red;
-            yield return new WaitForSeconds(0.2f);
+            if (failAudio != null) failAudio.Play();
+            if (imageCue != null) imageCue.enabled = false;
             visualCue.SetActive(false);
         }
 
@@ -137,22 +159,14 @@ public class PCSManager : MonoBehaviour
         if (!cueActive)
         {
             spamCount++;
-            Debug.Log("Button press detected OUTSIDE cue.");
         }
         else if (cueActive && !inputReceived)
         {
             if (!spammedThisCheck)
             {
                 inputReceived = true;
-                cueText.color = Color.green;
-                Debug.Log("Button press detected DURING cue.");
+                if (successAudio != null) successAudio.Play();
                 StartCoroutine(DisableVisualAfterDelay(0.2f));
-                if (successAudio != null)
-                successAudio.Play(); // 🔊 Spela ljud vid framgång
-            }
-            else
-            {
-                Debug.Log("Ignored input: This check is failed due to spamming.");
             }
         }
     }
@@ -160,18 +174,26 @@ public class PCSManager : MonoBehaviour
     private IEnumerator DisableVisualAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
+
+        if (imageCue != null)
+            imageCue.enabled = false;
+
         visualCue.SetActive(false);
     }
 
     private void ShowFinalResult()
     {
-
         int vrLegsScore = FindObjectOfType<VRScore>().GetFinalScore();
 
-        cueText.text = string.Format(scoreMessageFormat, successCount, totalChecks)
-            + $"\nVR Legs Score: {vrLegsScore}";
+        if (cueText != null)
+        {
+            cueText.text = string.Format(scoreMessageFormat, successCount, totalChecks)
+                + $"\nVR Legs Score: {vrLegsScore}";
+            cueText.color = originalTextColor;
+            cueText.gameObject.SetActive(true);
+            cuePanel.SetActive(true);
+        }
 
-        cueText.color = originalTextColor;
         visualCue.SetActive(true);
     }
 
@@ -184,42 +206,29 @@ public class PCSManager : MonoBehaviour
             PanicButton.action.performed -= OnResetInput;
     }
 
-
     public void StartGameFromManager()
     {
-        if (gameStarted) return; // Prevent starting the game loop again
-
+        if (gameStarted) return;
         gameStarted = true;
-        Debug.Log("PCSManager: Game started externally. Beginning PCS Loop.");
         pcsLoopCoroutine = StartCoroutine(PCSLoop());
     }
 
-    private void OnResetInput(InputAction.CallbackContext context) //Terminates game
+    private void OnResetInput(InputAction.CallbackContext context)
     {
         StartCoroutine(ResetGame());
     }
+
     private IEnumerator ResetGame()
     {
         isEnding = true;
-        Debug.Log("Game should be reset - PanicButton was pressed");
-        // Example termination actions (choose one):
-        // 1. Reload current scene
         ShowFinalResult();
-        if (isEnding == true)
-            if (runningCheck != null)
-                StopCoroutine(runningCheck);
+
+        if (runningCheck != null)
+            StopCoroutine(runningCheck);
         if (pcsLoopCoroutine != null)
             StopCoroutine(pcsLoopCoroutine);
+
         yield return new WaitForSeconds(resetDelay);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        
-        // 2. Or go to game over screen
-        // SceneManager.LoadScene("GameOverScene");
-        
-        // 3. Or quit application (for build)
-        // Application.Quit();
-        
-        // 4. Or simply stop movement
-        // enabled = false;
     }
 }
