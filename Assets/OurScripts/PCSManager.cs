@@ -43,6 +43,8 @@ public class PCSManager : MonoBehaviour
     [TextArea]
     public string scoreMessageFormat = "Score: {0} / {1}";
 
+    public static float checkAmount = 0;
+    public static float finalScore = 0;
     private float tmpOffset = 0;
     private bool isEnding = false;
     private Coroutine runningCheck;
@@ -108,7 +110,7 @@ public class PCSManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(5f - tmpOffset);
-        ShowFinalResult();
+        StartCoroutine(ResetGame());
     }
 
     private IEnumerator RunParticipationCheck()
@@ -185,12 +187,9 @@ public class PCSManager : MonoBehaviour
 
     private void ShowFinalResult()
     {
-        int vrLegsScore = FindObjectOfType<VRScore>().GetFinalScore();
-
         if (cueText != null)
         {
-            cueText.text = string.Format(scoreMessageFormat, successCount, totalChecks)
-                + $"\nVR Legs Score: {vrLegsScore}";
+            cueText.text = string.Format(scoreMessageFormat, successCount, totalChecks);
             cueText.color = originalTextColor;
             cueText.gameObject.SetActive(true);
         }
@@ -206,6 +205,10 @@ public class PCSManager : MonoBehaviour
 
         if (PanicButton?.action != null)
             PanicButton.action.performed -= OnResetInput;
+
+        checkAmount = totalChecks; // Used in TimerDisplay.cs
+        finalScore = successCount; 
+    
     }
 
     public void StartGameFromManager()
@@ -223,7 +226,6 @@ public class PCSManager : MonoBehaviour
     private IEnumerator ResetGame()
     {
         isEnding = true;
-        ShowFinalResult();
 
         if (runningCheck != null)
             StopCoroutine(runningCheck);

@@ -16,7 +16,10 @@ public class TimerDisplay : MonoBehaviour
             // Show previous time only if it exists
             if (!string.IsNullOrEmpty(previousTime))
             {
-                timerText.text = "Previous Time: " + previousTime;
+
+                timerText.text = "Previous Time: " + previousTime + 
+                "\nScore: " + PCSManager.finalScore + " / " + PCSManager.checkAmount;
+                
             }
             return;
         }
@@ -30,6 +33,7 @@ public class TimerDisplay : MonoBehaviour
     {
         // Save the last elapsed time when the object is destroyed
         previousTime = elapsedTime.ToString("F1") + " s";
+
     }
 
     public float GetElapsedTime()
