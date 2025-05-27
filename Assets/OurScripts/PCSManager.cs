@@ -109,7 +109,7 @@ public class PCSManager : MonoBehaviour
             runningCheck = StartCoroutine(RunParticipationCheck());
         }
 
-        yield return new WaitForSeconds(5f - tmpOffset);
+        yield return new WaitForSeconds(8f);
         StartCoroutine(ResetGame());
     }
 
