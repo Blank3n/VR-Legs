@@ -43,12 +43,12 @@ public class PCSManager : MonoBehaviour
     [TextArea]
     public string scoreMessageFormat = "Score: {0} / {1}";
 
+    private float tmpOffset = 0;
     private bool isEnding = false;
     private Coroutine runningCheck;
     private bool cueActive = false;
     private bool inputReceived = false;
     private int successCount = 0;
-    private int checksCompleted = 0;
     private int spamCount = 0;
     private bool spammedThisCheck = false;
 
@@ -73,9 +73,9 @@ public class PCSManager : MonoBehaviour
         {
             originalTextColor = cueText.color;
             cueText.gameObject.SetActive(false);
-            cuePanel.SetActive(false);
         }
 
+        cuePanel.SetActive(false);
         visualCue.SetActive(false);
 
         if (imageCue != null)
@@ -100,19 +100,23 @@ public class PCSManager : MonoBehaviour
 
     private IEnumerator PCSLoop()
     {
-        while (checksCompleted < totalChecks)
+        for (int i = 0; i < totalChecks; i++)
         {
-            float waitTime = baseInterval + Random.Range(-surpriseOffset, surpriseOffset);
+            float waitTime = baseInterval;
             yield return new WaitForSeconds(waitTime);
             runningCheck = StartCoroutine(RunParticipationCheck());
         }
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(5f - tmpOffset);
         ShowFinalResult();
     }
 
     private IEnumerator RunParticipationCheck()
     {
+        tmpOffset = Random.Range(-surpriseOffset, surpriseOffset);
+        float waitTime = tmpOffset;
+        yield return new WaitForSeconds(waitTime);
+
         spammedThisCheck = spamCount >= spamThreshold;
         spamCount = 0;
 
@@ -150,8 +154,6 @@ public class PCSManager : MonoBehaviour
             if (imageCue != null) imageCue.enabled = false;
             visualCue.SetActive(false);
         }
-
-        checksCompleted++;
     }
 
     private void HandleButtonPress(InputAction.CallbackContext context)
@@ -191,10 +193,10 @@ public class PCSManager : MonoBehaviour
                 + $"\nVR Legs Score: {vrLegsScore}";
             cueText.color = originalTextColor;
             cueText.gameObject.SetActive(true);
-            cuePanel.SetActive(true);
         }
 
         visualCue.SetActive(true);
+        cuePanel.SetActive(true);
     }
 
     private void OnDestroy()
