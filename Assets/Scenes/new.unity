@@ -8831,6 +8831,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: V1_Airship_1_Standard
       objectReference: {fileID: 0}
+    - target: {fileID: 8120051039600977816, guid: 27c9838fb8c29fa4bb17d3507e6d37e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8933989143135223074, guid: 27c9838fb8c29fa4bb17d3507e6d37e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 351
@@ -9166,7 +9170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8070499686316302217, guid: dfe16fc58b06279499a950bf03db77b6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
